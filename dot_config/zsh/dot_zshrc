@@ -1,0 +1,183 @@
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$CACHE_DIR"
+ZINIT_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zinit"
+
+declare -A ZINIT
+ZINIT[BIN_DIR]="$ZINIT_DIR/bin"
+ZINIT[HOME_DIR]="$ZINIT_DIR"
+ZINIT[ZCOMPDUMP_PATH]="$CACHE_DIR/.zcompdump-$ZSH_VERSION"
+ZINIT[COMPINIT_OPTS]='-C'
+
+# Load zinit zsh module (TODO: re-enable after "can't write zwc file" bug is fixed)
+# if [[ -d "${ZINIT[BIN_DIR]}/zmodules/Src" ]]; then
+#     module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )
+#     zmodload zdharma/zplugin
+# fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Options
+# =======
+HISTFILE="$CACHE_DIR/.histfile"
+mkdir -p "$(dirname "$HISTFILE")"
+HISTSIZE=10000
+SAVEHIST=10000
+# changing directories
+setopt auto_cd auto_pushd
+# history
+setopt hist_ignore_all_dups hist_ignore_space hist_verify inc_append_history hist_fcntl_lock
+# input/output
+setopt no_flow_control interactive_comments path_dirs
+# vi mode
+bindkey -v
+# Zsh help
+autoload -Uz run-help
+alias help=run-help
+
+# Key bindings
+# ============
+bindkey '^I' complete-word
+bindkey '^[[Z' expand-word
+
+# Zinit
+# =====
+### Added by Zinit's installer
+if [[ ! -f "${ZINIT[BIN_DIR]}/zinit.zsh" ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$ZINIT_DIR" && command chmod g-rwX "$ZINIT_DIR"
+    command git clone https://github.com/zdharma/zinit "${ZINIT[BIN_DIR]}" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "${ZINIT[BIN_DIR]}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Zinit annexes
+# =============
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zi light-mode for \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl
+
+### End of Zinit's installer chunk
+
+# Zinit snippets
+# ==============
+zi ice wait lucid; zi snippet $ZDOTDIR/aliases.zsh
+zi ice wait lucid; zi snippet $ZDOTDIR/functions.zsh
+zi ice wait lucid; zi snippet $ZDOTDIR/keybindings.zsh
+
+# Zinit plugins
+# =============
+# p10k prompt
+zi ice depth=1; zi light romkatv/powerlevel10k
+# fzf
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/fzf/key-bindings.zsh
+}
+[[ -f /usr/share/fzf/completion.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/fzf/completion.zsh
+}
+# fzf git
+[[ -f /usr/share/fzf-git-bindings/functions.sh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/fzf-git-bindings/functions.sh
+}
+[[ -f /usr/share/fzf-git-bindings/key-binding.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/fzf-git-bindings/key-binding.zsh
+}
+# z
+zi ice wait lucid; zi load agkozak/zsh-z
+# pkgfile
+[[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/doc/pkgfile/command-not-found.zsh
+}
+# syntax highlighting, completions and autosuggestions
+zi wait lucid for \
+    atload"FAST_HIGHLIGHT[chroma-zinit]= FAST_HIGHLIGHT[chroma-lab]= FAST_HIGHLIGHT[chroma-hub]=" \
+    atinit"zicompinit; zicdreplay" \
+    autoload'#bashcompinit' \
+        zdharma/fast-syntax-highlighting \
+    blockf \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+
+# Plugin settings
+# ===============
+# p10k theme for ascii or unicode 256 color capable terminals
+if [[ $TERM != (dumb|linux) && $langinfo[CODESET] == (utf|UTF)(-|)8 ]]; then
+    zi snippet $ZDOTDIR/unicode.p10k.zsh
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+    command -v vivid &> /dev/null && export LS_COLORS="$(vivid generate solarized-dark)"
+else
+    zi snippet $ZDOTDIR/ascii.p10k.zsh
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
+    command -v vivid &> /dev/null && export LS_COLORS="$(vivid --color-mode 8-bit generate solarized-dark)"
+fi
+# zsh-z: enable experimantal uncommon matching
+ZSHZ_UNCOMMON=1
+# zsh-z: data dir
+ZSHZ_DATA=$XDG_CACHE_HOME/z
+# autosuggestion: strategy
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+# autosuggestion: key bindings
+zle -N autosuggest-accept
+bindkey '^ ' autosuggest-accept
+zle -N autosuggest-toggle
+bindkey '^s' autosuggest-toggle
+
+# Completion
+# ==========
+# The following lines were added by compinstall
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' completer _oldlist _complete _ignored _correct _approximate
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix sufix
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-dirs-first
+zstyle ':completion:*' list-prompt '%S%F{blue}%BAt%b%f %F{yellow}%B%p%b%f: %F{blue}%BHit TAB for more, or the character to insert%b%f%s'
+zstyle ':completion:*' auto-description '%F{blue}%Bspecify: %b%f%F{yellow}%B%d%b%f'
+zstyle ':completion:*' format '%F{blue}%BCompleting %b%f%F{yellow}%B%d%b%f'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' numbers 1
+zstyle ':completion:*' use-compctl true
+
+
+
+
+# zstyle ':completion:*' prompt 'Error %e'
+# zstyle ':completion:*' verbose true
+#
+# zstyle ':completion:*' completer _oldlist _expand _complete _ignored _match _correct _approximate _prefix
+# zstyle ':completion:*' completions 1
+# zstyle ':completion:*' file-sort name
+# zstyle ':completion:*' glob 1
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' ignore-parents parent pwd
+# zstyle ':completion:*' insert-unambiguous true
+# zstyle ':completion:*' list-prompt '%S%F{blue}%BAt%b%f %F{yellow}%B%p%b%f: %F{blue}%BHit TAB for more, or the character to insert%b%f%s'
+# zstyle ':completion:*' match-original both
+# zstyle ':completion:*' max-errors 3
+# zstyle ':completion:*' original true
+# zstyle ':completion:*' preserve-prefix '//[^/]##/'
+# zstyle ':completion:*' prompt '%F{yellow}%B%e%b%f %F{blue}%Berror(s). There are following suggestions:%b%f'
+# zstyle ':completion:*' select-prompt '%S%F{blue}%BScrolling active: current selection at%b%f %F{yellow}%B%p%b%f%s'
+# zstyle ':completion:*' substitute 1
+zstyle ':completion:*' use-compctl true
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename "$ZDOTDIR/.zshrc"
+# End of lines added by compinstall
+
+# Named directory hashes
+hash -d bin="$HOME/.local/bin"
+hash -d dev="$HOME/Development"
+hash -d tmp="$HOME/tmp"
