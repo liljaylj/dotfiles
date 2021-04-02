@@ -1,0 +1,29 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{xml,html,cshtml,yaml,yml,pug,csv,json,conf,toml}]
+indent_size = 2
+insert_final_newline = false
+
+[*.{md,txt}]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[{Makefile,PKGBUILD}]
+indent_style = tab
+
+[*.{install,go}]
+indent_style = tab
+
+[*.{scala,sc,sbt,nix}]
+indent_size = 2
+
+[Vagrantfile]
+indent_size = 2

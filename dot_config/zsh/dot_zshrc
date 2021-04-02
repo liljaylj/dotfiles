@@ -110,6 +110,11 @@ zi wait lucid for \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions
 
+zi wait lucid for \
+    zsh-vi-more/evil-registers \
+    zsh-vi-more/vi-motions \
+    zsh-vi-more/vi-increment
+
 # Plugin settings
 # ===============
 # p10k theme for ascii or unicode 256 color capable terminals

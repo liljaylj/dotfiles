@@ -33,6 +33,7 @@ alias vpn='sudo openvpn --config ~/Documents/arch-dell.ovpn &'
 alias info='info --vi-keys'
 alias open='xdg-open'
 alias lg='lazygit'
+alias ch='chezmoi'
 
 # TODO: remove when wayland support lands
 alias code='GDK_BACKEND=x11 code'

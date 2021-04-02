@@ -53,6 +53,7 @@ gits() {
     done
 }
 
+# cd parent folder using fzf menu
 # dependencies: fzf, fzf's key-bindings.zsh
 cb() {
     local segments=("${(s:/:)$(pwd)}")
@@ -99,3 +100,13 @@ fi
 exit_zsh() { exit }
 zle -N exit_zsh
 bindkey '^D' exit_zsh
+
+# test bootable USB flash drive
+usboot() {
+	qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -usb -device usb-host,hostbus="$1",hostaddr="$2"
+}
+
+# boot ISO in QEMU
+isoboot() {
+	qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -boot d -cdrom "$1"
+}
