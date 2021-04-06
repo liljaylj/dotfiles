@@ -1,0 +1,7 @@
+source ~/.config/nvim/init.vim
+set surround commentary easymotion multiple-cursors ReplaceWithRegister argtextobj textobj-entire highlightedyank
+set clipboard+=ideaput
+set ideajoin
+set ideamarks
+set showmode
+set idearefactormode=keep
