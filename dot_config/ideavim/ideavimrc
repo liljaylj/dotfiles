@@ -1,5 +1,6 @@
 source ~/.config/nvim/init.vim
 set surround commentary easymotion multiple-cursors ReplaceWithRegister argtextobj textobj-entire highlightedyank
+set NERDTree
 set clipboard+=ideaput
 set ideajoin
 set ideamarks
