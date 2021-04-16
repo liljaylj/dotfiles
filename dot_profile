@@ -1,0 +1,76 @@
+# PATH
+export PATH=$HOME/.local/bin:$HOME/.config/composer/vendor/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/Android/Sdk/tools/bin:$HOME/Android/Sdk/emulator:$HOME/go/bin:$HOME/.dotnet/tools:$HOME/Flutter/bin:$HOME/.krew/bin:$PATH
+
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+
+# Pager
+export PAGER=less
+
+# Less syntax highlight
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
+
+# Man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Terminal
+export TERMINAL=alacritty
+
+# Browser
+export BROWSER=firefox
+
+# XDG dirs
+# Systemwide
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
+# User specific
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# XDG override
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
+# GOPATH
+export GOPATH=$HOME/go:$HOME/Development/go
+
+# Firefox
+export MOZ_WEBRENDER=1
+export MOZ_ACCELERATED=1
+export MOZ_USE_XINPUT2=1
+
+# Java
+export JAVA_HOME=/usr/lib/jvm/default
+
+# Deepgit
+export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+
+# IntelliJ IDEA
+export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
+
+# SBT options
+export SBT_OPTS="-Xms512M -Xmx4G -Xss2M -XX:MaxMetaspaceSize=4G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
+
+# Make flags
+export MAKEFLAGS="-j$(($(nproc) - 2))"
+
+# XWayland keyboard config
+export XKB_DEFAULT_LAYOUT='us,ru,kz'
+export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
+
+# QMK home
+export QMK_HOME="$HOME/Development/github.com/liljaylj/qmk_firmware"
+
+# Import from file(s)
+set -a
+# User dirs
+. "$HOME/.config/user-dirs.dirs"
+set +a
+
+# If running from tty1 start sway
+if [ "$(tty)" = "/dev/tty1" ]; then
+    exec sway
+fi
