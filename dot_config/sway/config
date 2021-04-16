@@ -1,0 +1,398 @@
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+set {
+    # Default mod keys
+    # - Mod1 = Meta
+    # - Mod4 = Alt
+    $mod    Mod4
+    $mod2   Mod1
+    # Home row direction keys, like vim
+    $left   H
+    $down   J
+    $up     K
+    $right  L
+    # Terminal emulator
+    $term   alacritty
+    # Your preferred application launcher
+    # Note: it's recommended that you pass the final command to sway
+    $menu 'wofi -ImiG -S drun | xargs swaymsg exec --'
+    # Swaynag command
+    $nag exec       swaynagmode
+    $nag_exit       $nag --exit
+    $nag_confirm    $nag --confirm
+    $nag_select     $nag --select
+    # Swaylock
+    $lock 'swaylock -f -i ~/Pictures/bg-blurred.jpg'
+    $pause_lock 'playerctl -a pause ; swaylock -f -i ~/Pictures/bg-blurred.jpg'
+    # xkb config
+    $xkb_layout 'us,ru,kz'
+    $xkb_option 'grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
+}
+
+### Start-up
+# Enable numlock on start
+input * xkb_numlock enabled
+# XDG Autostart
+exec dex -a
+# Wayland equivalent of arandr
+exec kanshi
+# Wob - OSD
+# exec wobrun
+# Gammastep indicator
+exec gammastep-indicator
+# # Per-window keyboard layout
+exec swaykbdd
+
+### Output configuration
+output * bg ~/Pictures/bg.jpg fill
+
+### Look & feel
+title_align center
+titlebar_border_thickness 0
+titlebar_padding 0
+# default_border normal 1
+default_border pixel 3
+font pango:sans 8
+gaps inner 0
+hide_edge_borders smart_no_gaps
+smart_borders no_gaps
+smart_gaps on
+popup_during_fullscreen smart
+focus_wrapping no
+show_marks yes
+
+### Custom windows tweaks
+# JetBrains IDEs
+for_window [class="jetbrains-idea-ce" title="win0"] floating enabled, border pixel 0
+for_window [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enabled
+# Telegram call window
+for_window [floating app_id="telegramdesktop"] border pixel 3
+# Firefox sharing indicator
+for_window [title="^Firefox — Sharing Indicator$"] floating enabled, border pixel 0, move position 0 0, opacity .5, move scratchpad
+# XP-Pen Pentablet config
+for_window [class="pentablet"] floating enabled
+# Krita splash screen
+for_window [class="krita" window_type="splash"] border pixel 0
+
+### Idle configuration
+exec swayidle -w \
+         timeout 180 $lock \
+         timeout 175 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep $pause_lock
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+bindswitch --locked lid:on exec systemctl suspend
+
+seat seat0 hide_cursor 15000
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+### Input configuration
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input 'type:touchpad' {
+# Touchpad
+    accel_profile       adaptive
+    click_method        clickfinger
+    drag                enabled
+    drag_lock           enabled
+    dwt                 enabled
+    events              disabled_on_external_mouse
+    middle_emulation    enabled
+    natural_scroll      enabled
+    scroll_method       two_finger
+    scroll_factor       0.5
+    tap                 enabled
+    tap_button_map      lrm
+}
+
+input 'type:keyboard' {
+# Keyboard
+    xkb_layout          $xkb_layout
+    xkb_numlock         enabled
+    xkb_options         $xkb_option
+}
+
+### Key bindings
+#
+# Basics:
+#
+bindsym --to-code {
+    --no-repeat $mod+p exec '~/.local/bin/sway-command'
+
+    $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+
+    --no-repeat $mod+i exec '~/.local/bin/pick-emoji'
+    --no-repeat $mod+Shift+i exec '~/.local/bin/pick-emoji-name'
+    --no-repeat $mod+$mod2+i exec '~/.local/bin/pick-gitmoji'
+    --no-repeat $mod+Ctrl+i exec '~/.local/bin/pick-gitmoji-name'
+
+    --no-repeat $mod+Shift+d exec 'wofi -S run'
+
+    # Start apps
+    # ==========
+    #
+    # start your launcher
+    --no-repeat $mod+d exec $menu
+    --no-repeat Find exec $menu
+    # start a terminal
+    $mod+Return exec $term
+    $mod+t exec $term
+    # Enpass
+    $mod+Backslash exec 'dexrun enpass-assistant'
+    $mod+Shift+Backslash exec 'dexrun enpass'
+
+    # kill focused window
+    $mod+Shift+q kill
+    --whole-window $mod+Shift+button2 kill
+    $mod+Ctrl+q exec 'sway-kill-focused'
+    --whole-window $mod+Ctrl+button2 exec 'sway-kill-focused'
+    $mod+$mod2+q exec 'sway-kill-focused KILL'
+    --whole-window $mod+$mod2+button2 exec 'sway-kill-focused KILL'
+
+    # screen lock
+    $mod2+Ctrl+L exec $lock
+
+    # audio controls
+    --locked XF86AudioMute exec --no-startup-id pa-toggle-all
+    --locked XF86AudioLowerVolume exec --no-startup-id pa-vol-running -5%
+    --locked XF86AudioRaiseVolume exec --no-startup-id pa-vol-running +5%
+    --locked XF86AudioMicMute exec --no-startup-id pa-toggle-all
+
+    --locked --whole-window $mod+button4 exec --no-startup-id pa-vol-running +2%
+    --locked --whole-window $mod+button5 exec --no-startup-id pa-vol-running -2%
+
+    # media controls
+    --locked XF86AudioPlay exec --no-startup-id playerctl play-pause
+    --locked XF86AudioPrev exec --no-startup-id playerctl previous
+    --locked XF86AudioNext exec --no-startup-id playerctl next
+    --locked XF86AudioRewind exec --no-startup-id playerctl position 5-
+    --locked XF86AudioForward exec --no-startup-id playerctl position 5+
+    --locked Shift+XF86AudioMute exec --no-startup-id playerctl play-pause
+    --locked Shift+XF86AudioLowerVolume exec --no-startup-id playerctl previous
+    --locked Shift+XF86AudioRaiseVolume exec --no-startup-id playerctl next
+
+    # brightness control
+    --locked XF86MonBrightnessUp exec --no-startup-id 'brightness-level-up 10'
+    --locked XF86MonBrightnessDown exec --no-startup-id 'brightness-level-down 10'
+    --locked Shift+XF86MonBrightnessUp exec --no-startup-id 'brightness-level-up 1'
+    --locked Shift+XF86MonBrightnessDown exec --no-startup-id 'brightness-level-down 1'
+    --locked Ctrl+XF86MonBrightnessUp exec --no-startup-id 'brillo -A .1'
+    --locked Ctrl+XF86MonBrightnessDown exec --no-startup-id 'brillo -U .1'
+
+    --locked --whole-window $mod+Shift+button4 exec --no-startup-id 'brightness-level-up 5'
+    --locked --whole-window $mod+Shift+button5 exec --no-startup-id 'brightness-level-down 5'
+
+    # window opacity
+    --whole-window $mod+$mod2+button4 opacity plus 0.01
+    --whole-window $mod+$mod2+button5 opacity minus 0.01
+
+    # display config
+    --no-repeat XF86Display exec --no-startup-id 'wdisplays'
+
+    # toggle HDMI-A-2
+    --locked Shift+XF86Display output HDMI-A-2 toggle
+
+    # screenshot
+    --no-repeat Print exec --no-startup-id exec 'take-grimshot'
+    $mod+Print exec --no-startup-id 'grimshot --notify copy output'
+    $mod2+Print exec --no-startup-id 'grimshot --notify copy active'
+    Ctrl+Print exec --no-startup-id 'grimshot --notify copy area'
+    $mod+Shift+Print exec --no-startup-id 'grimshot --notify save output'
+    $mod2+Shift+Print exec --no-startup-id 'grimshot --notify save active'
+    Ctrl+Shift+Print exec --no-startup-id 'grimshot --notify save area'
+
+    # reload the configuration file
+    --release $mod+Shift+c reload
+    $mod+Shift+c nop
+
+    # exit sway (logs you out of your Wayland session)
+    $mod+Shift+e $nag -t 'warning' -m 'Exit?' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # Moving around
+    # =============
+    # Move your focus around
+    $mod+$left  focus left
+    $mod+$down  focus down
+    $mod+$up    focus up
+    $mod+$right focus right
+    # _move_ the focused window with the same, but add Shift
+    $mod+Shift+$left move left
+    $mod+Shift+$down move down
+    $mod+Shift+$up move up
+    $mod+Shift+$right move right
+
+    # Workspaces
+    # ==========
+    # switch to workspace
+    $mod+1 workspace 1
+    $mod+2 workspace 2
+    $mod+3 workspace 3
+    $mod+4 workspace 4
+    $mod+5 workspace 5
+    $mod+6 workspace 6
+    $mod+7 workspace 7
+    $mod+8 workspace 8
+    $mod+9 workspace 9
+    $mod+0 workspace 10
+    # move focused container to workspace
+    $mod+Shift+1 move container to workspace 1
+    $mod+Shift+2 move container to workspace 2
+    $mod+Shift+3 move container to workspace 3
+    $mod+Shift+4 move container to workspace 4
+    $mod+Shift+5 move container to workspace 5
+    $mod+Shift+6 move container to workspace 6
+    $mod+Shift+7 move container to workspace 7
+    $mod+Shift+8 move container to workspace 8
+    $mod+Shift+9 move container to workspace 9
+    $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+    $mod+$mod2+$left move workspace output left
+    $mod+$mod2+$down move workspace output down
+    $mod+$mod2+$up move workspace output up
+    $mod+$mod2+$right move workspace output right
+    # workspace back and forth switch
+    $mod+Tab workspace back_and_forth
+    --no-repeat $mod2+Tab exec 'sway-wofi-switch-window'
+
+    # Layout stuff
+    # ============
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    $mod+b splith
+    $mod+v splitv
+    # Switch the current container between different layout styles
+    $mod+s layout stacking
+    $mod+w layout tabbed
+    $mod+e layout toggle split
+    # Make the current focus fullscreen
+    $mod+f fullscreen
+    # Toggle the current focus between tiling and floating mode
+    $mod+Shift+space floating toggle
+    # Swap focus between the tiling area and the floating area
+    # TODO: solve conflict with keyboard layout change
+    $mod+space focus mode_toggle
+    # make floating window sticky
+    $mod+Shift+s sticky toggle
+    # move focus to the parent container
+    $mod+a focus parent
+    # move focus to the parent container
+    $mod+q focus child
+
+    # Scratchpad
+    # ==========
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+    # Move the currently focused window to the scratchpad
+    $mod+Shift+minus move scratchpad
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    $mod+minus scratchpad show
+}
+
+# Resizing containers
+# ===================
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym --to-code {
+        $left resize shrink width 50px
+        $down resize grow height 50px
+        $up resize shrink height 50px
+        $right resize grow width 50px
+
+        $mod+$left resize shrink width 10px
+        $mod+$down resize grow height 10px
+        $mod+$up resize shrink height 10px
+        $mod+$right resize grow width 10px
+
+        $mod+Shift+$left resize shrink width 1px
+        $mod+Shift+$down resize grow height 1px
+        $mod+Shift+$up resize shrink height 1px
+        $mod+Shift+$right resize grow width 1px
+
+        # return to default mode
+        Return mode "default"
+        Escape mode "default"
+        $mod+r mode "default"
+    }
+}
+bindsym --to-code $mod+r mode "resize"
+
+### Swaynag
+# command
+swaynag_command $nag
+# mode
+mode "nag" {
+    bindsym --to-code {
+        Ctrl+d      mode "default"
+
+        Ctrl+c      $nag_exit
+        q           $nag_exit
+        Escape      $nag_exit
+
+        Return      $nag_confirm
+
+        Tab         $nag_select prev
+        Shift+Tab   $nag_select next
+        H           $nag_select next
+        L           $nag_select prev
+        Left        $nag_select next
+        Right       $nag_select prev
+        Up          $nag_select next
+        Down        $nag_select prev
+    }
+}
+
+# Status Bar
+# ==========
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    # swaybar_command waybar
+    position bottom
+    mode hide
+    modifier $mod
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while echo "$(acpi) $(date +'%F %R')"; do sleep 30; done
+
+    font pango:sans 10
+    colors {
+        background #323232dd
+        statusline #ffffffff
+        focused_workspace #285577dd #285577dd #ffffffff
+        active_workspace #5f676add #5f676add #ffffffff
+        inactive_workspace #323232dd #323232dd #888888ff
+        urgent_workspace #900000dd #900000dd #ffffffff
+    }
+
+}
+
+include /etc/sway/config.d/*
+
+exec "systemctl --user import-environment"
+exec "hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd"
+exec "setxkbmap -layout $xkb_layout -option $xkb_option"
