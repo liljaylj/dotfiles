@@ -38,6 +38,7 @@ alias ch='chezmoi'
 # TODO: remove when wayland support lands
 alias code='GDK_BACKEND=x11 code'
 alias marktext='GDK_BACKEND=x11 marktext'
+alias zeebe-modeler='GDK_BACKEND=x11 zeebe-modeler'
 
 if [ $(find ~/.aliases.d -type f | wc -l) -gt 0 ]; then
 	for f in ~/.aliases.d/*
