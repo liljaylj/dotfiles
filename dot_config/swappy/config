@@ -1,0 +1,4 @@
+[Default]
+save_dir=$XDG_SCREENSHOTS_DIR
+save_filename_format=%Y-%m-%dT%H:%M:%S.png
+show_panel=true
