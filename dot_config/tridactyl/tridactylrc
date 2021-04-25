@@ -1,0 +1,4 @@
+# set smooth scrolling
+set smoothscroll true
+# set editor to neovim
+set editorcmd /usr/bin/alacritty -e '/usr/bin/nvim'
