@@ -1,0 +1,13 @@
+key_up=Up,Control_L-k
+key_down=Down,Control_L-j
+key_left=Left,Control_L-h
+key_right=Right,Control_L-l
+key_forward=Tab,Control_L-n
+key_backward=ISO_Left_Tab,Control_L-p
+key_pgup=Page_Up,Control_L-b
+key_pgdn=Page_Up,Control_L-f
+key_expand=Control_L-space,Control_L-bracketright
+key_exit=Escape,Control_L-bracketleft
+
+layer=overlay
+gtk_dark=true
