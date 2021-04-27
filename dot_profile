@@ -57,6 +57,10 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # Readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
+# Gtk
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+
 # Deepgit
 export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
