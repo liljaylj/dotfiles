@@ -1,0 +1,23 @@
+font=sans-serif 11
+border-radius=1
+icon-path=/usr/share/icons/Papirus
+progress-color=over #ffffff33
+
+background-color=#285577ee
+text-color=#ffffffee
+border-color=#4c7899ee
+
+[urgency=low]
+background-color=#3e4f5cee
+text-color=#aaaaaaee
+border-color=#4b5b66ee
+
+[urgency=high]
+background-color=#900000ee
+text-color=#ffffffee
+border-color=#aa0000ee
+
+[category=audio-volume]
+default-timeout=1000
+group-by=category
+format=<b>Volume: %s%%</b>
