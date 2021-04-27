@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gzdoom -iwad doom_complete.pk3 -file mapsofchaos-ok.wad -file brutal-doom.pk3 -file doom-metal.wad -file game_widescreen_gfx.pk3
