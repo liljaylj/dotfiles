@@ -110,3 +110,11 @@ usboot() {
 isoboot() {
 	qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -boot d -cdrom "$1"
 }
+
+# load functions from functions.d dir
+if [ $(find "$ZDOTDIR/functions.d" -type f | wc -l) -gt 0 ]; then
+    for f in "$ZDOTDIR/functions.d"/*.zsh
+    do
+        source "$f"
+    done
+fi
