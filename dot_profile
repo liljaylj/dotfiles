@@ -13,9 +13,6 @@ export PAGER=less
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
-# Less history file
-export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
-
 # Man pager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
@@ -47,6 +44,9 @@ export MOZ_USE_XINPUT2=1
 
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
+
+# Less history file
+export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
 
 # NodeJS
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
