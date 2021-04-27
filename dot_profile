@@ -61,6 +61,9 @@ export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
+# Gibo git boilerplates
+export GIBO_BOILERPLATES="$XDG_CACHE_HOME/gitignore-boilerplates"
+
 # Deepgit
 export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
