@@ -142,8 +142,6 @@ bindsym --to-code {
 
     --no-repeat $mod+i exec '~/.local/bin/pick-emoji'
     --no-repeat $mod+Shift+i exec '~/.local/bin/pick-emoji-name'
-    --no-repeat $mod+$mod2+i exec '~/.local/bin/pick-gitmoji'
-    --no-repeat $mod+Ctrl+i exec '~/.local/bin/pick-gitmoji-name'
 
     --no-repeat $mod+Shift+d exec 'wofi -S run'
 
