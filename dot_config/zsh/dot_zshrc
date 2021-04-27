@@ -155,6 +155,7 @@ zstyle ':completion:*' format '%F{blue}%BCompleting %b%f%F{yellow}%B%d%b%f'
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' numbers 1
 zstyle ':completion:*' use-compctl true
+zstyle ':completion:*' cache-path $CACHE_DIR/zcompcache
 
 
 
