@@ -35,6 +35,7 @@ alias info='info --vi-keys'
 alias open='xdg-open'
 alias lg='lazygit'
 alias ch='chezmoi'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 # TODO: remove when wayland support lands
 alias code='GDK_BACKEND=x11 code'
