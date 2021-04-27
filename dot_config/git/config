@@ -1,0 +1,35 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Zhanibek Adilbekov
+	email = zhanibek.adilbekov@pm.me
+[push]
+	default = current
+[gc]
+	autoDetach = false
+[core]
+	autocrlf = input
+	pager = delta
+[status]
+	submodulesummary = 1
+[credential]
+	helper = cache --timeout=2592000
+
+[pull]
+    rebase = false
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	line-numbers = true
+	side-by-side = false
+[diff]
+	colorMoved = default
+[init]
+	defaultBranch = develop
+[url "git@gitlab.fortebank.com:onetech/"]
+    insteadOf = one:
+[url "git@gitlab.fortebank.com:onetech/anthill/"]
+    insteadOf = ant:
+[url "git@gitlab.com:zhanibek/"]
+    insteadOf = gl:
+[url "git@github.com:liljaylj/"]
+    insteadOf = gh:
