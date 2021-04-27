@@ -45,6 +45,9 @@ export MOZ_USE_XINPUT2=1
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
 
+# NPM
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
 # Deepgit
 export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
