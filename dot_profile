@@ -54,6 +54,9 @@ export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 # NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
+# Readline
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
 # Deepgit
 export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 
