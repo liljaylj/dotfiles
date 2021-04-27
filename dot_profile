@@ -45,6 +45,9 @@ export MOZ_USE_XINPUT2=1
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
 
+# NodeJS
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+
 # NPM
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
