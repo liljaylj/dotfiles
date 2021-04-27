@@ -42,9 +42,9 @@ alias code='GDK_BACKEND=x11 code'
 alias marktext='GDK_BACKEND=x11 marktext'
 alias zeebe-modeler='GDK_BACKEND=x11 zeebe-modeler'
 
-if [ $(find ~/.aliases.d -type f | wc -l) -gt 0 ]; then
-	for f in ~/.aliases.d/*
+if [ $(find "$XDG_CONFIG_HOME/zsh/aliases.d" -type f | wc -l) -gt 0 ]; then
+	for f in "$XDG_CONFIG_HOME/zsh/aliases.d"/*.zsh
 	do
-		source $f
+		source "$f"
 	done
 fi
