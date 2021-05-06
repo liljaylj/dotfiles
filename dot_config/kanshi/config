@@ -9,3 +9,7 @@ profile home {
     output eDP-1 position 0,840 mode 1920x1080
     output "Unknown 24E1W1 GNSK6HA054206" position 1920,0 mode 1920x1080 transform 270
 }
+profile tv {
+    output eDP-1 position 0,0 mode 1920x1080
+    output "Samsung Electric Company SAMSUNG 0x00000001" position 1920,0 mode 1920x1080 transform normal
+}
