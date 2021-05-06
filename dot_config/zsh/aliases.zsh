@@ -38,7 +38,7 @@ alias ch='chezmoi'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 
 # TODO: remove when wayland support lands
-alias code='GDK_BACKEND=x11 code'
+alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland --no-sandbox --unity-launch'
 alias marktext='GDK_BACKEND=x11 marktext'
 alias zeebe-modeler='GDK_BACKEND=x11 zeebe-modeler'
 
