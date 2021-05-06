@@ -67,7 +67,7 @@ show_marks yes
 for_window [class="jetbrains-idea-ce" title="win0"] floating enabled, border pixel 0
 for_window [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enabled
 # Telegram call window
-for_window [floating app_id="telegramdesktop"] border pixel 3
+# for_window [floating app_id="telegramdesktop"] border pixel 3
 # Firefox sharing indicator
 for_window [title="^Firefox — Sharing Indicator$"] floating enabled, border pixel 0, move position 0 0, opacity .5, move scratchpad
 # XP-Pen Pentablet config
