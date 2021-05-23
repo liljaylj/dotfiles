@@ -1,0 +1,43 @@
+#!/bin/sh
+
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+# XWayland keyboard config
+export XKB_DEFAULT_LAYOUT='us,ru,kz'
+export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
+
+# Enable Wayland in Apps
+# ----------------------
+# NOTE: Gtk3 apps enable Wayland by default
+export GDK_BACKEND=wayland
+# Firefox
+export MOZ_ENABLE_WAYLAND=1
+# Fix firefox "Firefox is already running"
+export MOZ_DBUS_REMOTE=1
+# Fix for ATK taking precedence over Gecko
+export NO_AT_BRIDGE=1
+# LibreOffice
+export SAL_USE_VCLPLUGIN=gtk3
+# Qt5
+export QT_QPA_PLATFORM=wayland-egl
+# export QT_WAYLAND_FORCE_DPI=physical # disabled, because it makes QT apps ugly
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_STYLE_OVERRIDE=kvantum
+# Elementary/EFL
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
+# SDL
+export SDL_VIDEODRIVER=wayland
+# Clutter
+export CLUTTER_BACKEND=wayland
+# Java AWT
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# WORKAROUNDS
+# -----------
+# if gtk uses portal it looks ugly
+# export GTK_USE_PORTAL=0
+
+systemd-cat --identifier=sway /usr/bin/sway -V "$@"
