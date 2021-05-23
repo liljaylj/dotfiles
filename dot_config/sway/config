@@ -18,7 +18,7 @@ set {
     # Note: it's recommended that you pass the final command to sway
     $menu 'wofi -ImiG -S drun | xargs swaymsg exec --'
     # Swaynag command
-    $nag exec       swaynagmode
+    $nag            exec swaynagmode
     $nag_exit       $nag --exit
     $nag_confirm    $nag --confirm
     $nag_select     $nag --select
