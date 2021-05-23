@@ -591,6 +591,7 @@ key_bindings:
 
   - { key: 53,       mods: Shift,       mode: Vi, action: SearchBackward   }
   - { key: Return,   mods: Alt,                   action: SpawnNewInstance }
+  - { key: LBracket, mods: Control,     mode: Vi, action: ToggleViMode     }
 
   #- { key: Paste,                                action: Paste          }
   #- { key: Copy,                                 action: Copy           }
