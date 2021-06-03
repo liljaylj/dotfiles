@@ -108,12 +108,67 @@ bindkey '^D' exit_zsh
 
 # test bootable USB flash drive
 usboot() {
-	qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -usb -device usb-host,hostbus="$1",hostaddr="$2"
+    qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -usb -device usb-host,hostbus="$1",hostaddr="$2"
 }
 
 # boot ISO in QEMU
 isoboot() {
-	qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -boot d -cdrom "$1"
+    qemu-system-x86_64 -m 2048 -smp 2 -enable-kvm -bios /usr/share/edk2-ovmf/x64/OVMF_CODE.fd -boot d -cdrom "$1"
+}
+
+venv() {
+
+    local activate() {
+        source "$1/bin/activate"
+    }
+
+    local prg="$(basename "$0")"
+
+    if [ "$#" -lt 1 ]
+    then
+        echo "\
+Usage:
+    $prg [activate] <env name> - Activate virtual environment
+    $prg create <env name> - Create new virtual environment
+    $prg delete <env name> - Delete virtual environment
+    $prg list - List available virtual environments"
+        return 1
+    fi
+
+    local venv_root="${VENV_HOME:-"${XDG_CACHE_HOME:-"$HOME/.cache"}/venv"}"
+    [ ! -d "$venv_root" ] && mkdir -p "$venv_root"
+
+    case "$1" in
+        create|cr|c)
+            python -m venv "$venv_root/$2"
+            activate "$venv_root/$2"
+            ;;
+        delete|del|d)
+            venv_path="${VIRTUAL_ENV:-"$venv_root/$2"}"
+            type deactivate &> /dev/null && deactivate
+            rm -rf "$venv_path"
+            ;;
+        list|ls|l)
+            ls -1 "$venv_root"
+            ;;
+        activate|act|a)
+            activate "$venv_root/$2"
+            ;;
+        *)
+            activate "$venv_root/$1"
+            ;;
+    esac
+}
+
+update-kubeconfig() {
+    KUBECONFIG="$HOME/.kube/config"
+    if [ -d "$HOME/.kube/config.d" ]
+    then
+        while read -r file; do
+            KUBECONFIG+=":$file"
+        done < <(fd -t f '' "$HOME/.kube/config.d")
+    fi
+    export KUBECONFIG
 }
 
 # load functions from functions.d dir
