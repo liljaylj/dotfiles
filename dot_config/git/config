@@ -1,35 +1,45 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Zhanibek Adilbekov
-	email = zhanibek.adilbekov@pm.me
+    name = Zhanibek Adilbekov
+    email = zhanibek.adilbekov@pm.me
 [push]
-	default = current
+    default = current
 [gc]
-	autoDetach = false
+    autoDetach = false
 [core]
-	autocrlf = input
-	pager = delta
+    autocrlf = input
+    pager = delta
+    hooksPath = "~/.config/git/hooks"
 [status]
-	submodulesummary = 1
+    submodulesummary = 1
 [credential]
-	helper = cache --timeout=2592000
+    helper = cache --timeout=2592000
 
 [pull]
     rebase = false
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
 [delta]
-	line-numbers = true
-	side-by-side = false
+    line-numbers = true
+    side-by-side = false
+    hunk-header-style = file line-number syntax
 [diff]
-	colorMoved = default
+    colorMoved = default
 [init]
-	defaultBranch = develop
+    defaultBranch = develop
+[url "git@gitlab.fortebank.com:"]
+    insteadOf = forte:
 [url "git@gitlab.fortebank.com:onetech/"]
     insteadOf = one:
 [url "git@gitlab.fortebank.com:onetech/anthill/"]
     insteadOf = ant:
-[url "git@gitlab.com:zhanibek/"]
+[url "git@gitlab.com:"]
     insteadOf = gl:
-[url "git@github.com:liljaylj/"]
+[url "git@gitlab.com:zhanibek/"]
+    insteadOf = gll:
+[url "git@github.com:"]
     insteadOf = gh:
+[url "git@github.com:liljaylj/"]
+    insteadOf = ghl:
+[url "ssh://aur@aur.archlinux.org/"]
+    insteadOf = aur:
