@@ -45,9 +45,9 @@ gits() {
                 ;;
         esac
 
-        eval "$prefix""$fnum"="\"$(realpath "$fname")\""
+        eval "$prefix""$fnum"="\"$(realpath -m "$fname")\""
         [[ -n "$fname2" ]] && {
-            eval "$prefix""$fnum2"="\"$(realpath "$fname2")\""
+            eval "$prefix""$fnum2"="\"$(realpath -m "$fname2")\""
         }
 
     done
@@ -82,18 +82,18 @@ zle -N cb
 autoload -Uz add-zsh-hook
 
 function xterm_title_precmd () {
-	print -Pn -- '\e]2;%~\a'
-	[[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{B}%~\005{-}\e\\'
+    print -Pn -- '\e]2;%~\a'
+    [[ "$TERM" == 'screen'* ]] && print -Pn -- '\e_\005{B}%~\005{-}\e\\'
 }
 
 function xterm_title_preexec () {
-	print -Pn -- '\e]2;%~%# ' && print -n -- "${(q)1}\a"
-	[[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
+    print -Pn -- '\e]2;%~%# ' && print -n -- "${(q)1}\a"
+    [[ "$TERM" == 'screen'* ]] && { print -Pn -- '\e_\005{B}%~\005{-} %# ' && print -n -- "${(q)1}\e\\"; }
 }
 
 if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
+    add-zsh-hook -Uz precmd xterm_title_precmd
+    add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
 # Exit on partial command line
