@@ -68,11 +68,16 @@ cb() {
         zle redisplay
         return 0
     }
+    local IFS=$'/'
+    local result="/${list[@]:0:$index}"
+    echo $result
+    zle push-line
+    BUFFER="cd ${(q)result}"
+    zle accept-line
     local ret=$?
-    local result=("${list[@]:0:$index}")
-    cd "$(local IFS=$'/'; echo "/${result[*]}")"
     unset IFS
-    zle fzf-redraw-prompt
+    unset result
+    zle reset-prompt
     return $ret
 }
 
