@@ -42,6 +42,10 @@ export MOZ_WEBRENDER=1
 export MOZ_ACCELERATED=1
 export MOZ_USE_XINPUT2=1
 
+# Qt
+export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_STYLE_OVERRIDE=kvantum
+
 # Java
 export JAVA_HOME=/usr/lib/jvm/default
 
