@@ -30,8 +30,8 @@ release-notes:
 branches: # Git branches config.
     prefix: ([a-z]+\/)? # Prefix used on branch name, it should be a regex group.
     suffix: (-.*)? # Suffix used on branch name, it should be a regex group.
-    disable-issue: false # Set true if there is no need to recover issue id from branch name.
-    skip: # List of branch names ignored on commit message validation.
+    disable-issue: true # Set true if there is no need to recover issue id from branch name.
+    skip: [] # List of branch names ignored on commit message validation.
         # - master
         # - main
         # - developer
