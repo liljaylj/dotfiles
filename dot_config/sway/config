@@ -205,9 +205,11 @@ bindsym --to-code {
 
     # display config
     --no-repeat XF86Display exec --no-startup-id 'wdisplays'
+    --no-repeat XF86Launch5 exec --no-startup-id 'wdisplays'
 
     # toggle HDMI-A-2
     --locked Shift+XF86Display output HDMI-A-2 toggle
+    --locked Shift+XF86Launch5 output HDMI-A-2 toggle
 
     # screenshot
     --no-repeat Print exec --no-startup-id exec 'take-grimshot'
