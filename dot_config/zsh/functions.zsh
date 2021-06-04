@@ -161,13 +161,7 @@ Usage:
 }
 
 update-kubeconfig() {
-    KUBECONFIG="$HOME/.kube/config"
-    if [ -d "$HOME/.kube/config.d" ]
-    then
-        while read -r file; do
-            KUBECONFIG+=":$file"
-        done < <(fd -t f '' "$HOME/.kube/config.d")
-    fi
+    KUBECONFIG="$(kube-configs)"
     export KUBECONFIG
 }
 
