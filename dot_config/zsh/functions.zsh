@@ -53,36 +53,6 @@ gits() {
     done
 }
 
-# cd parent folder using fzf menu
-# dependencies: fzf, fzf's key-bindings.zsh
-cb() {
-    local segments=("${(s:/:)$(pwd)}")
-    local length=${#segments[@]}
-    local count=$((count-1))
-    local list=("${segments[@]:1:$count}")
-    setopt pipefail
-    index=$(local IFS=$'\n'; echo "${list[*]}" | awk -v OFS=/ '{print NR, $0}' |\
-        fzf --tac -0 -1 --with-nth 2 -d / | awk -F / '{print $1}')
-    set +o pipefail
-    [[ -z $index ]] && {
-        zle redisplay
-        return 0
-    }
-    local IFS=$'/'
-    local result="/${list[@]:0:$index}"
-    echo $result
-    zle push-line
-    BUFFER="cd ${(q)result}"
-    zle accept-line
-    local ret=$?
-    unset IFS
-    unset result
-    zle reset-prompt
-    return $ret
-}
-
-zle -N cb
-
 # Dynamic terminal title
 autoload -Uz add-zsh-hook
 

@@ -113,7 +113,8 @@ zi wait lucid for \
 zi wait lucid for \
     zsh-vi-more/evil-registers \
     zsh-vi-more/vi-motions \
-    zsh-vi-more/vi-increment
+    zsh-vi-more/vi-increment \
+    liljaylj/zsh-bd
 
 # Plugin settings
 # ===============
