@@ -71,6 +71,8 @@ if [[ "$TERM" == (alacritty*|gnome*|konsole*|putty*|rxvt*|screen*|tmux*|xterm*) 
     add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
+xterm_title_precmd
+
 # Exit on partial command line
 exit_zsh() { exit }
 zle -N exit_zsh
