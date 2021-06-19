@@ -116,6 +116,8 @@ zi wait lucid for \
     zsh-vi-more/vi-increment \
     liljaylj/zsh-bd
 
+type direnv &> /dev/null && source <(direnv hook zsh)
+
 # Plugin settings
 # ===============
 # p10k theme for ascii or unicode 256 color capable terminals
