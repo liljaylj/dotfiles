@@ -207,9 +207,12 @@ bindsym --to-code {
     --no-repeat XF86Display exec --no-startup-id 'wdisplays'
     --no-repeat XF86Launch5 exec --no-startup-id 'wdisplays'
 
-    # toggle HDMI-A-2
+    # toggle HDMI-A-2 (find out how to auto detect secondary output. for some reason both outputs shows as "primary": false)
     --locked Shift+XF86Display output HDMI-A-2 toggle
     --locked Shift+XF86Launch5 output HDMI-A-2 toggle
+
+    # toggle touchpad
+    --locked XF86Launch6 input 'type:touchpad' events toggle disabled_on_external_mouse enabled disabled
 
     # screenshot
     --no-repeat Print exec --no-startup-id exec 'take-grimshot'
