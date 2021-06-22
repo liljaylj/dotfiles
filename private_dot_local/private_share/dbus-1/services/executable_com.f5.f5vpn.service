@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.f5.f5vpn
+Exec=env QT_QPA_PLATFORM=xcb /opt/f5/vpn/f5vpn
