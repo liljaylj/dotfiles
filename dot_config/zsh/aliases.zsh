@@ -38,7 +38,6 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # TODO: remove when wayland support lands
 alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland --no-sandbox --unity-launch'
 alias marktext='GDK_BACKEND=x11 marktext'
-alias zeebe-modeler='GDK_BACKEND=x11 zeebe-modeler'
 
 # load aliases from aliases.d dir
 if [ $(find "$ZDOTDIR/aliases.d" -type f | wc -l) -gt 0 ]; then
