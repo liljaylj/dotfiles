@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Enpass Assistant
+Name[en_IN]=Enpass Assistant
+GenericName=Enpass Assistant
+Icon=enpass
+Icon[en_IN]=enpass
+Terminal=false
+Exec=env QT_QPA_PLATFORM=xcb /opt/enpass/Enpass showassistant %U
+MimeType=x-scheme-handler/enpassauth;x-scheme-handler/enpasscard;x-scheme-handler/enpassstart;x-scheme-handler/enpass;x-scheme-handler/cloudkit-7adb8cc6tf.in.sinew.walletx;application/enpasscard;
+Categories=Utility
+
