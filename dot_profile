@@ -94,8 +94,7 @@ export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys
 export QMK_HOME="$HOME/Development/github.com/liljaylj/qmk_firmware"
 
 # kube config
-KUBECONFIG="$(kube-configs)"
-export KUBECONFIG
+export KUBECONFIG="$(kube-configs)"
 
 # sv4git config
 export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
