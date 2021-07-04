@@ -43,3 +43,7 @@
     insteadOf = ghl:
 [url "ssh://aur@aur.archlinux.org/"]
     insteadOf = aur:
+
+
+[include]
+    path = ./config.local
