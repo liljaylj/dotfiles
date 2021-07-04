@@ -40,9 +40,10 @@ alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland --n
 alias marktext='GDK_BACKEND=x11 marktext'
 
 # load aliases from aliases.d dir
-if [ $(find "$ZDOTDIR/aliases.d" -type f | wc -l) -gt 0 ]; then
-	for f in "$ZDOTDIR/aliases.d"/*.zsh
-	do
-		source "$f"
-	done
+if [ -d "$ZDOTDIR/aliases.d" ] && [ -r "$ZDOTDIR/aliases.d" ]
+then
+    while read -r f
+    do
+        source "$f"
+    done < <(find -L "$ZDOTDIR/aliases.d" -mindepth 1 -maxdepth 1 -name '*.zsh' -type f)
 fi

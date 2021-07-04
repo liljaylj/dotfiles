@@ -100,10 +100,23 @@ export KUBECONFIG
 # sv4git config
 export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
 
+
 # Import from file(s)
 set -a
+
 # User dirs
 . "$HOME/.config/user-dirs.dirs"
+
+# Source host dependent profile(s)
+if [ -d "$XDG_CONFIG_HOME/profile.d" ] && [ -r "$XDG_CONFIG_HOME/profile.d" ]
+then
+    while read -r f
+    do
+        source "$f"
+    done < <(find -L "$XDG_CONFIG_HOME/profile.d" -mindepth 1 -maxdepth 1 -type f)
+fi
+
+# End Import from file(s)
 set +a
 
 # If running from tty1 start sway

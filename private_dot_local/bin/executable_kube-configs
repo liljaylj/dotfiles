@@ -1,11 +1,12 @@
 #!/bin/bash
 
 KUBECONFIG="$HOME/.kube/config"
-if [ -d "$HOME/.kube/config.d" ]
+if [ -d "$HOME/.kube/config.d" ] && [ -r "$HOME/.kube/config.d" ]
 then
-    while read -r file; do
-        KUBECONFIG="$KUBECONFIG:$file"
-    done < <(fd -t f '' "$HOME/.kube/config.d")
+    while read -r f
+    do
+        KUBECONFIG="$KUBECONFIG:$f"
+    done < <(find -L "$HOME/.kube/config.d" -mindepth 1 -maxdepth 1 -type f)
 fi
 
 printf '%s' "$KUBECONFIG"
