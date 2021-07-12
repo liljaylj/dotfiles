@@ -6,3 +6,4 @@ set ideajoin
 set ideamarks
 set showmode
 set idearefactormode=keep
+set textobj-indent
