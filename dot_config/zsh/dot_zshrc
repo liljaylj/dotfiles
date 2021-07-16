@@ -83,6 +83,9 @@ zi ice depth=1; zi light romkatv/powerlevel10k
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/fzf/key-bindings.zsh
 }
+[[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/fzf/shell/key-bindings.zsh
+}
 [[ -f /usr/share/fzf/completion.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/fzf/completion.zsh
 }
