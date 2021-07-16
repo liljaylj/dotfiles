@@ -119,7 +119,12 @@ fi
 # End Import from file(s)
 set +a
 
+# Is running under WSL
+grep -iq 'microsoft' /proc/sys/kernel/osrelease
+export IS_WSL=$?
+
+
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ]; then
+if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
     exec sway
 fi
