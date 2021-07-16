@@ -126,6 +126,6 @@ export IS_WSL=$?
 
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
+if [ "$(tty)" = "/dev/tty1" ] && [ $IS_WSL -ne 0 ]; then
     exec sway
 fi
