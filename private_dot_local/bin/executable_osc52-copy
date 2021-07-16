@@ -1,0 +1,5 @@
+#!/bin/sh
+
+clipboard=${1:-c}
+
+printf '\e]52;%s;%s' "$clipboard" "$(base64)"
