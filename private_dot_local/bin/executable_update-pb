@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wget 'https://github.com/pa1nki113r/Project_Brutality/archive/refs/heads/master.zip' -O "$HOME/Games/DooM/project-brutality.zip"
