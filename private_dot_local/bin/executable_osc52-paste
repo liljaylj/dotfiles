@@ -1,8 +1,0 @@
-#!/bin/sh
-
-clipboard=${1:-c}
-
-printf ${TMUX+'\ePtmux;\e'}'\e]52;%s;?;\a'${TMUX+'\e\'} "$clipboard" > ${TTY:-/dev/tty}
-read -rs -u0 -d$'\a' < ${TTY:-/dev/tty}
-REPLY=$(base64 -d <<< ${REPLY##*;})
-printf '%s' "$REPLY"
