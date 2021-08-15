@@ -23,4 +23,4 @@ set_cookies = 'auto'
 # Enable Vi editor mode? Available values: True / False.
 # When Vi mode is enabled, you use Vi-like keybindings to edit your commands.
 # When it is disabled, you use Emacs keybindings.
-vi = False
+vi = True
