@@ -14,6 +14,8 @@
     submodulesummary = 1
 [credential]
     helper = cache --timeout=2592000
+[log]
+    date = iso-local
 
 [pull]
     rebase = false
