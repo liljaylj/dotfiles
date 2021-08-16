@@ -48,7 +48,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # export QT_STYLE_OVERRIDE=kvantum
 
 # Java
-export JAVA_HOME=/usr/lib/jvm/default
+export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default}
 
 # Less history file
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
