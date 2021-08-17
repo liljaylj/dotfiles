@@ -203,4 +203,11 @@ if !exists('g:vscode')
 
     " ALE config
     let g:ale_python_flake8_options = '--max-line-length=119'
+    let g:ale_fixers = {
+                \   'python': ['isort', 'autopep8'],
+                \}
+
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+    nmap <silent> <leader>f <Plug>(ale_fix)
 endif
