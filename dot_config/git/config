@@ -29,6 +29,7 @@
     colorMoved = default
 [init]
     defaultBranch = develop
+
 [url "git@gitlab.fortebank.com:"]
     insteadOf = forte:
 [url "git@gitlab.fortebank.com:onetech/"]
@@ -45,6 +46,19 @@
     insteadOf = ghl:
 [url "ssh://aur@aur.archlinux.org/"]
     insteadOf = aur:
+
+[includeIf "gitdir:~/Development/gitlab.fortebank.com/"]
+    path = ~/Development/gitlab.fortebank.com/.gitconfig
+[includeIf "gitdir:~/Development/gitlab.fortebank.com/onetech/"]
+    path = ~/Development/gitlab.fortebank.com/onetech/.gitconfig
+[includeIf "gitdir:~/Development/git.dar.kz/"]
+    path = ~/Development/git.dar.kz/.gitconfig
+[includeIf "gitdir:~/Development/gitlab.com/"]
+    path = ~/Development/gitlab.com/.gitconfig
+[includeIf "gitdir:~/Development/github.com/"]
+    path = ~/Development/github.com/.gitconfig
+[includeIf "gitdir:~/Development/aur.archlinux.org/"]
+    path = ~/Development/aur.archlinux.org/.gitconfig
 
 
 [include]
