@@ -21,3 +21,6 @@ border-color=#aa0000ee
 default-timeout=1000
 group-by=category
 format=<b>Volume: %s%%</b>
+
+[mode=dnd]
+invisible=1
