@@ -21,6 +21,16 @@ x-scheme-handler/msteams=teams.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-J5Z3V0.desktop
 text/csv=libreoffice-calc.desktop
 image/svg+xml=org.inkscape.Inkscape.desktop
+x-scheme-handler/rdp=org.remmina.Remmina.desktop
+x-scheme-handler/spice=org.remmina.Remmina.desktop
+x-scheme-handler/vnc=org.remmina.Remmina.desktop
+x-scheme-handler/remmina=org.remmina.Remmina.desktop
+application/x-remmina=org.remmina.Remmina.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-J5Z3V0.desktop;
+x-scheme-handler/rdp=org.remmina.Remmina.desktop;
+x-scheme-handler/spice=org.remmina.Remmina.desktop;
+x-scheme-handler/vnc=org.remmina.Remmina.desktop;
+x-scheme-handler/remmina=org.remmina.Remmina.desktop;
+application/x-remmina=org.remmina.Remmina.desktop;
