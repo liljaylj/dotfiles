@@ -59,6 +59,9 @@ fi
 # Less history file
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
 
+# Default diff program
+export DIFFPROG=delta
+
 # NodeJS
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 
