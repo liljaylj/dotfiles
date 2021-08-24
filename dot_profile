@@ -61,7 +61,7 @@ fi
 # Less history file
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
 
-# Default diff program
+# Default diff program for pacdiff
 export DIFFPROG=delta
 
 # NodeJS
