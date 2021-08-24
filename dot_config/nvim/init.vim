@@ -90,7 +90,9 @@ if !exists('g:vscode')
     " Persistent undo
     if has('persistent_undo')
         set udf
-        set udir=$XDG_DATA_HOME/nvim/undo
+        if !has('win32') && exists('$XDG_DATA_HOME')
+            set udir=$XDG_DATA_HOME/nvim/undo
+        endif
     endif
 
     " Alias :Wq to :wq
