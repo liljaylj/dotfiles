@@ -50,9 +50,11 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 # Java
 if [ -e /etc/alternatives/java_sdk ]
 then
+    # Fedora
     export JAVA_HOME=/etc/alternatives/java_sdk
 elif [ -e /usr/lib/jvm/default ]
 then
+    # Arch Linux
     export JAVA_HOME=/usr/lib/jvm/default
 fi
 
