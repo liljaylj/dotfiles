@@ -138,6 +138,7 @@ input 'type:keyboard' {
 #
 bindsym --to-code {
     --no-repeat $mod+p exec '~/.local/bin/sway-command'
+    --no-repeat $mod+Shift+t exec '~/.local/bin/cliptype 3'
 
     $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
