@@ -1,0 +1,3 @@
+#!/bin/sh
+
+type swaymsg > /dev/null && swaymsg input 'type:keyboard' xkb_switch_layout "$1"
