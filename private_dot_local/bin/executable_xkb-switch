@@ -1,0 +1,41 @@
+#!/bin/sh
+
+cmd='print'
+
+while getopts "s:lhvwWndp" arg
+do
+    case $arg in
+        s)
+            cmd='switch'
+            im="$OPTARG"
+            ;;
+        l)
+            cmd='list'
+            ;;
+        h|v|w|W|n|d)
+            echo 'ERR: command is not implemented'
+            exit 1
+            ;;
+        p)
+            cmd='print'
+            ;;
+        ?)
+            exit 1
+            ;;
+    esac
+done
+
+case $cmd in
+    switch)
+        type swaymsg > /dev/null && swaymsg input 'type:keyboard' xkb_switch_layout "$im"
+        ;;
+    list)
+        type swaymsg > /dev/null && swaymsg -t get_inputs | jq -r '[.[] | select(.type? == "keyboard" and .xkb_layout_names?)] | select(.[0]?) | .[0].xkb_layout_names | keys | .[]'
+        ;;
+    print)
+        type swaymsg > /dev/null && swaymsg -t get_inputs | jq -r '[.[] | select(.type? == "keyboard" and .xkb_active_layout_index?)] | select(.[0]?) | .[0].xkb_active_layout_index'
+        ;;
+    *)
+        ;;
+esac
+

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-type swaymsg > /dev/null && swaymsg -t get_inputs | jq -c '.[] | select(.type? == "keyboard" and .xkb_active_layout_index) | .xkb_active_layout_index' | head -1
