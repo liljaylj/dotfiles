@@ -36,6 +36,8 @@
     insteadOf = one:
 [url "git@gitlab.fortebank.com:onetech/anthill/"]
     insteadOf = ant:
+[url "git@git.dar.kz:"]
+    insteadOf = dar:
 [url "git@gitlab.com:"]
     insteadOf = gl:
 [url "git@gitlab.com:zhanibek/"]
