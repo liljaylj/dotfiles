@@ -98,6 +98,9 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 # Make flags
 export MAKEFLAGS="-j$(($(nproc) - 2))"
 
+# Rust compile flags
+export RUSTFLAGS="-C target-cpu=native"
+
 # XWayland keyboard config
 export XKB_DEFAULT_LAYOUT='us,ru,kz'
 export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
