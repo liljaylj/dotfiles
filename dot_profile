@@ -136,6 +136,6 @@ grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1
 
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ] && [ $IS_WSL -ne 0 ]; then
+if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
     exec sway
 fi
