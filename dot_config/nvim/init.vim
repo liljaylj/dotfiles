@@ -286,4 +286,8 @@ if !exists('g:vscode')
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
     nmap <silent> <leader>f <Plug>(ale_fix)
+
+    " OSC52 yank
+    vnoremap <leader>c :OSCYank<CR>
+    nnoremap <leader>c <Plug>OSCYank
 endif
