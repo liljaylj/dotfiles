@@ -37,6 +37,8 @@ set hls " Enlable highliting of all occurences in seach
 set incsearch " Enable incremental search
 set nowrap " Disable word wrap
 set foldmethod=marker
+set bg=dark
+set tgc " 24-color support
 
 " Move in insert/command mode
 inoremap <C-h> <Left>
@@ -52,6 +54,8 @@ if !exists('g:vscode')
 
     " toggle word wrap
     nnoremap <leader>p :set wrap!<cr>
+    " toggle 24-bit color support
+    nnoremap <leader>t :set tgc!<CR>
 
     " highlight the search match in red
     highlight WhiteOnRed ctermbg=red ctermfg=white guibg=red guifg=white
@@ -153,6 +157,8 @@ if !exists('g:vscode')
     "noremap <silent> <C-Bslash> :call ToggleNetrw(1)<CR>
     "noremap <silent> <C-_> :call ToggleNetrw(0)<CR>
 
+else
+    " config for vscode
 endif
 
 let plug_dir = stdpath('data') . '/site/autoload/plug.vim'
@@ -183,6 +189,7 @@ if !exists('g:vscode')
     Plug 'easymotion/vim-easymotion'
     Plug 'dense-analysis/ale'
     Plug 'ojroques/vim-oscyank'
+    Plug 'drewtempelmeyer/palenight.vim'
     Plug 'psliwka/vim-smoothie'
 endif
 
@@ -198,6 +205,20 @@ let g:highlightedyank_highlight_duration = 300
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 if !exists('g:vscode')
+    " palenight colorscheme
+    colorscheme palenight
+    if $TERM =~? '^\(dumb\|linux\)$'
+        set notgc " 8-color format
+        let g:palenight_termcolors = 16
+        let g:palenight_terminal_italics = 0
+    else
+        set tgc " 24-color support
+        let g:palenight_termcolors = 256
+        let g:palenight_terminal_italics = 1
+        " unset background color for transparency to work and more consistent
+        " look compared to terminal
+        hi Normal guibg=NONE
+    endif
     " fzf
     inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
     command! -bang HFiles call fzf#run(fzf#wrap({'source': 'fd -HI', 'sink': 'e'}, <bang>0))
