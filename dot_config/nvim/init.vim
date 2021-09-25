@@ -1,3 +1,5 @@
+lua require('init')
+
 " Map <Leader> key to space
 "map <Space> <Leader>
 let mapleader="\<Space>"
