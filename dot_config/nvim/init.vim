@@ -238,6 +238,9 @@ if !exists('g:vscode')
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'psliwka/vim-smoothie'
+else
+    " plugins for vscode
+    Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
 endif
 
 call plug#end()
