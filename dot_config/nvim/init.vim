@@ -233,6 +233,7 @@ if !exists('g:vscode')
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'easymotion/vim-easymotion'
+    " Plug 'phaazon/hop.nvim'
     Plug 'dense-analysis/ale'
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
@@ -249,6 +250,9 @@ let g:highlightedyank_highlight_duration = 300
 
 " Hard mode toggle
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
+" Easymotion
+let g:EasyMotion_keys = 'fjdksla;ghrueiwoqptyvmzxcbn'
 
 if !exists('g:vscode')
     " palenight colorscheme
