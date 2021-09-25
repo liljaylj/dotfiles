@@ -50,6 +50,51 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
 
+" Autoswitch keyboard layout on insert mode
+function! KeyboardLayoutCmdlineEnter()
+    let g:kb_layout_cmdline_mode_leave=system('im-switch -p')
+    if exists('g:kb_layout_cmdline_mode_enter')
+        call system(printf("im-switch -s '%s'", g:kb_layout_cmdline_mode_enter))
+    else
+        let g:kb_layout_cmdline_mode_enter=system('im-switch -p')
+    endif
+endfunction
+
+function! KeyboardLayoutCmdlineLeave()
+    let g:kb_layout_cmdline_mode_enter=system('im-switch -p')
+    if exists('g:kb_layout_cmdline_mode_leave')
+        call system(printf("im-switch -s '%s'", g:kb_layout_cmdline_mode_leave))
+    else
+        let g:kb_layout_cmdline_mode_leave=system('im-switch -p')
+    endif
+endfunction
+
+function! KeyboardLayoutInsertEnter()
+    let g:kb_layout_insert_mode_leave=system('im-switch -p')
+    if exists('g:kb_layout_insert_mode_enter')
+        call system(printf("im-switch -s '%s'", g:kb_layout_insert_mode_enter))
+    else
+        let g:kb_layout_insert_mode_enter=system('im-switch -p')
+    endif
+endfunction
+
+function! KeyboardLayoutInsertLeave()
+    let g:kb_layout_insert_mode_enter=system('im-switch -p')
+    if exists('g:kb_layout_insert_mode_leave')
+        call system(printf("im-switch -s '%s'", g:kb_layout_insert_mode_leave))
+    else
+        let g:kb_layout_insert_mode_leave=system('im-switch -p')
+    endif
+endfunction
+
+aug AutoSwitchKeyboardLayout
+    au!
+    au CmdlineEnter * call KeyboardLayoutCmdlineEnter()
+    au CmdlineLeave * call KeyboardLayoutCmdlineLeave()
+    au InsertEnter * call KeyboardLayoutInsertEnter()
+    au InsertLeave * call KeyboardLayoutInsertLeave()
+aug END
+
 if !exists('g:vscode')
 
     " toggle word wrap
