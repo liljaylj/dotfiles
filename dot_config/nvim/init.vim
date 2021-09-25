@@ -224,6 +224,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wikitopian/hardmode'
 Plug 'wellle/targets.vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'thinca/vim-visualstar'
 
 if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
