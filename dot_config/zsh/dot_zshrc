@@ -123,15 +123,16 @@ type direnv &> /dev/null && source <(direnv hook zsh)
 
 # Plugin settings
 # ===============
-# p10k theme for ascii or unicode 256 color capable terminals
-if [[ $TERM != (dumb|linux) && $langinfo[CODESET] == (utf|UTF)(-|)8 ]]; then
-    zi snippet $ZDOTDIR/unicode.p10k.zsh
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-    command -v vivid &> /dev/null && export LS_COLORS="$(vivid generate solarized-dark)"
-else
+# Custom settings for terminals not capable for 24-bit color and UTF-8
+if [[ $TERM =~ '^(dumb|linux)$' ]]
+then
     zi snippet $ZDOTDIR/ascii.p10k.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
     command -v vivid &> /dev/null && export LS_COLORS="$(vivid --color-mode 8-bit generate solarized-dark)"
+else
+    zi snippet $ZDOTDIR/unicode.p10k.zsh
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+    command -v vivid &> /dev/null && export LS_COLORS="$(vivid generate solarized-dark)"
 fi
 # zsh-z: enable experimantal uncommon matching
 ZSHZ_UNCOMMON=1
