@@ -240,6 +240,7 @@ if !exists('g:vscode')
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'psliwka/vim-smoothie'
+    Plug 'simnalamburt/vim-mundo'
 else
     " plugins for vscode
     Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
@@ -260,6 +261,8 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 let g:EasyMotion_keys = 'fjdksla;ghrueiwoqptyvmzxcbn'
 
 if !exists('g:vscode')
+    " mundo mapping
+    nnoremap <silent> <leader>u :MundoToggle<CR>
     " palenight colorscheme
     colorscheme palenight
     if $TERM =~? '^\(dumb\|linux\)$'
