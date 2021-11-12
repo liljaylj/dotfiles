@@ -1,0 +1,79 @@
+theme = "native"
+icons = "awesome"
+
+# [[block]]
+# block = "kdeconnect"
+
+# [[block]]
+# block = "music"
+# hide_when_empty = true
+# buttons = ["prev", "play", "next"]
+# max_width = 30
+
+# [[block]]
+# block = "pacman"
+# interval = 600
+# format = "{pacman},{aur}"
+# format_singular = "{both}"
+# format_up_to_date = ""
+# aur_command = "paru -Qua"
+# hide_when_uptodate = true
+# on_click = "alacritty -e 'zsh -c paru'"
+
+[[block]]
+block = "bluetooth"
+mac = "F2:89:D1:3F:C6:77"
+hide_disconnected = true
+
+# [[block]]
+# block = "hueshift"
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+# [[block]]
+# block = "load"
+# interval = 1
+# format = "{1m}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "battery"
+driver = "upower"
+device = "DisplayDevice"
+full_threshold = 79
+
+[[block]]
+block = "taskwarrior"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+[block.mappings]
+"English (US)" = "EN"
+"Russian (N/A)" = "RU"
+"Kazakh (N/A)" = "KK"
