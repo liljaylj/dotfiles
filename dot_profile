@@ -115,10 +115,6 @@ export KUBECONFIG
 # sv4git config
 export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
 
-# Taskwarrior
-export TASKRC="$XDG_CONFIG_HOME/taskrc"
-export TASKDATA="$XDG_DATA_HOME/task"
-
 # Import from file(s)
 set -a
 
