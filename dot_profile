@@ -115,6 +115,11 @@ export KUBECONFIG
 # sv4git config
 export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
 
+# ytt tasks repo
+export YTT_HOME="$XDG_DATA_HOME/ytt"
+export YTT_REPO='git@github.com:liljaylj/yttasks.git'
+
+#
 # Import from file(s)
 set -a
 
@@ -130,8 +135,9 @@ then
     done < <(find -L "$XDG_CONFIG_HOME/profile.d" -mindepth 1 -maxdepth 1 -type f)
 fi
 
-# End Import from file(s)
 set +a
+# End Import from file(s)
+#
 
 # Is running under WSL
 grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1

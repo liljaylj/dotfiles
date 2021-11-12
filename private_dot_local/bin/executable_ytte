@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -Eeuo pipefail
+
+if [ ! -d "$YTT_HOME" ]
+then
+    git clone "$YTT_REPO" "$YTT_HOME"
+fi
+
+cd "$YTT_HOME"
+
+git pull
+
+nvim tasks
+
+if [ -n "$(git status -s)" ]
+then
+    git add .
+    git commit -m "feat: update tasks $(date)"
+    git push
+else
+    echo 'Tasks unchanged'
+fi
