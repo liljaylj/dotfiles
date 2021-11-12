@@ -11,7 +11,7 @@ ZINIT[COMPINIT_OPTS]='-C'
 # Load zinit zsh module (TODO: re-enable after "can't write zwc file" bug is fixed)
 # if [[ -d "${ZINIT[BIN_DIR]}/zmodules/Src" ]]; then
 #     module_path+=( "${ZINIT[BIN_DIR]}/zmodules/Src" )
-#     zmodload zdharma/zplugin
+#     zmodload zdharma-continuum/zplugin
 # fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -48,9 +48,9 @@ bindkey '^[[Z' expand-word
 # =====
 ### Added by Zinit's installer
 if [[ ! -f "${ZINIT[BIN_DIR]}/zinit.zsh" ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$ZINIT_DIR" && command chmod g-rwX "$ZINIT_DIR"
-    command git clone https://github.com/zdharma/zinit "${ZINIT[BIN_DIR]}" && \
+    command git clone https://github.com/zdharma-continuum/zinit "${ZINIT[BIN_DIR]}" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -64,8 +64,8 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zi light-mode for \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl
 
 ### End of Zinit's installer chunk
 
@@ -107,7 +107,7 @@ zi wait lucid for \
     atload"FAST_HIGHLIGHT[chroma-zinit]= FAST_HIGHLIGHT[chroma-lab]= FAST_HIGHLIGHT[chroma-hub]=" \
     atinit"zicompinit; zicdreplay" \
     autoload'#bashcompinit' \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
     blockf \
         zsh-users/zsh-completions \
     atload"!_zsh_autosuggest_start" \
