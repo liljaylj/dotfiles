@@ -3,8 +3,8 @@
 ### Variables
 set {
     # Default mod keys
-    # - Mod1 = Meta
-    # - Mod4 = Alt
+    # - Mod1 = Alt
+    # - Mod4 = Meta
     $mod    Mod4
     $mod2   Mod1
     # Home row direction keys, like vim
@@ -146,6 +146,8 @@ bindsym --to-code {
     --no-repeat $mod+Shift+i exec '~/.local/bin/pick-emoji-name'
 
     --no-repeat $mod+Shift+d exec 'wofi -S run'
+
+    --locked --no-repeat $mod+Space exec '~/.local/bin/layout-switcher'
 
     # Start apps
     # ==========
@@ -296,7 +298,7 @@ bindsym --to-code {
     $mod+Shift+space floating toggle
     # Swap focus between the tiling area and the floating area
     # TODO: solve conflict with keyboard layout change
-    $mod+space focus mode_toggle
+    $mod+Ctrl+Space focus mode_toggle
     # make floating window sticky
     $mod+Shift+s sticky toggle
     # move focus to the parent container
