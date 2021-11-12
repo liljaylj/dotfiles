@@ -279,7 +279,7 @@ bindsym --to-code {
     $mod+$mod2+$right move workspace output right
     # workspace back and forth switch
     $mod+Tab workspace back_and_forth
-    --no-repeat $mod2+Tab exec 'sway-wofi-switch-window'
+    # --no-repeat $mod2+Tab exec 'sway-wofi-switch-window'
 
     # Layout stuff
     # ============
