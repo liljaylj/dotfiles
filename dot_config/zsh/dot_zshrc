@@ -102,6 +102,9 @@ zi ice wait lucid; zi load agkozak/zsh-z
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/doc/pkgfile/command-not-found.zsh
 }
+[[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/doc/git-extras/git-extras-completion.zsh
+}
 # syntax highlighting, completions and autosuggestions
 zi wait lucid for \
     atload"FAST_HIGHLIGHT[chroma-zinit]= FAST_HIGHLIGHT[chroma-lab]= FAST_HIGHLIGHT[chroma-hub]=" \
