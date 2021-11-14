@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 if [ ! -d "$YTT_HOME" ]
 then
-    git clone "$YTT_REPO" "$YTT_HOME"
+    gh repo clone "$YTT_REPO" "$YTT_HOME"
 fi
 
 cd "$YTT_HOME"

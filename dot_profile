@@ -117,7 +117,7 @@ export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
 
 # ytt tasks repo
 export YTT_HOME="$XDG_DATA_HOME/ytt"
-export YTT_REPO='git@github.com:liljaylj/yttasks.git'
+export YTT_REPO='liljaylj/yttasks'
 
 #
 # Import from file(s)
