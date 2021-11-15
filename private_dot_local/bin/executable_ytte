@@ -9,7 +9,7 @@ fi
 
 cd "$YTT_HOME"
 
-gh sync
+git pull
 
 nvim tasks
 
@@ -17,7 +17,7 @@ if [ -n "$(git status -s)" ]
 then
     git add .
     git commit -m "feat: update tasks $(date)"
-    gh sync
+    git push
 else
     echo 'Tasks unchanged'
 fi
