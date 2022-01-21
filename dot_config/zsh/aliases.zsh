@@ -29,6 +29,7 @@ alias open='xdg-open'
 alias lg='lazygit'
 alias ch='chezmoi'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias cdx='cd "$(xplr)"'
 
 # TODO: remove when wayland support lands
 alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland --no-sandbox --unity-launch'
