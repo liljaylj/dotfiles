@@ -1,7 +1,12 @@
 # Aliases
 alias sudo='sudo '
 alias lsd='lsd --group-dirs=first'
-alias ls='lsd'
+if [[ -n $UNICODE_256_COLOR ]]
+then
+    alias ls='lsd'
+else
+    alias ls='lsd --icon=never'
+fi
 alias l='ls'
 alias la='ls -lA'
 alias ll='ls -l'
