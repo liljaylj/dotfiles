@@ -113,15 +113,20 @@ zi ice wait lucid; zi load agkozak/zsh-z
 [[ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/doc/git-extras/git-extras-completion.zsh
 }
+at_comp_load() {
+    FAST_HIGHLIGHT[chroma-zinit]=
+    FAST_HIGHLIGHT[chroma-lab]=
+    FAST_HIGHLIGHT[chroma-hub]=
+}
 # syntax highlighting, completions and autosuggestions
 zi wait lucid for \
-    atload"FAST_HIGHLIGHT[chroma-zinit]= FAST_HIGHLIGHT[chroma-lab]= FAST_HIGHLIGHT[chroma-hub]=" \
-    atinit"zicompinit; zicdreplay" \
+    atload'at_comp_load' \
+    atinit'zicompinit; zicdreplay' \
     autoload'#bashcompinit' \
         zdharma-continuum/fast-syntax-highlighting \
     blockf \
         zsh-users/zsh-completions \
-    atload"!_zsh_autosuggest_start" \
+    atload'!_zsh_autosuggest_start' \
         zsh-users/zsh-autosuggestions
 
 zi wait lucid for \
