@@ -116,6 +116,9 @@ zi ice wait lucid; zi load agkozak/zsh-z
 [[ -f /usr/bin/aws_zsh_completer.sh ]] && {
     zi ice wait lucid; zi snippet /usr/bin/aws_zsh_completer.sh
 }
+[[ /usr/share/lf/lfcd.sh ]] && {
+    zi ice wait lucid; zi snippet /usr/share/lf/lfcd.sh
+}
 at_comp_load() {
     FAST_HIGHLIGHT[chroma-zinit]=
     FAST_HIGHLIGHT[chroma-lab]=
