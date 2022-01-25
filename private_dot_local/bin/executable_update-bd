@@ -2,8 +2,8 @@
 
 set -Eeuxo pipefail
 
-REPO="$HOME/Development/github.com/pa1nki113r/Project_Brutality"
-DEST="$HOME/Games/DooM/project-brutality.zip"
+REPO="$HOME/Development/github.com/BLOODWOLF333/Brutal-Doom-Community-Expansion"
+DEST="$HOME/Games/DooM/brutal-doom.zip"
 
 cd "$REPO"
 
