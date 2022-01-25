@@ -74,6 +74,8 @@ for_window [title="^Firefox — Sharing Indicator$"] floating enabled, border pi
 for_window [class="pentablet"] floating enabled
 # Krita splash screen
 for_window [class="krita" window_type="splash"] border pixel 0
+# Tor browser launcher settings
+for_window [title="^Tor Browser Launcher Settings$"] floating enabled
 
 ### Idle configuration
 exec swayidle -w \
