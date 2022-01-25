@@ -26,6 +26,7 @@ x-scheme-handler/spice=org.remmina.Remmina.desktop
 x-scheme-handler/vnc=org.remmina.Remmina.desktop
 x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
+inode/directory=alacritty-directory.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-J5Z3V0.desktop;
