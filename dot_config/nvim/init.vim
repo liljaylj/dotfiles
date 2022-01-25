@@ -123,8 +123,8 @@ if !exists('g:vscode')
     set number relativenumber
     augroup numbertoggle
       autocmd!
-      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+      autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
+      autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * set norelativenumber
     augroup END
 
     " Show invisibles
@@ -227,6 +227,7 @@ Plug 'wikitopian/hardmode'
 Plug 'wellle/targets.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'thinca/vim-visualstar'
+Plug 'chrisbra/matchit'
 
 if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
