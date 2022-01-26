@@ -17,7 +17,7 @@ notify_time=5000
 clip_type="$(wl-paste -l | rg -m1 'text/plain')"
 text_to_type="$(wl-paste -n -t "$clip_type")"
 text_to_type_len="$(wc -m <<<"$text_to_type")"
-text_to_type_max_len=22
+text_to_type_max_len=200
 
 [[ "$text_to_type_max_len" -lt "$text_to_type_len" ]] && \
     which zenity > /dev/null && \
