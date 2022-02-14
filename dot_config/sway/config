@@ -76,6 +76,8 @@ for_window [class="pentablet"] floating enabled
 for_window [class="krita" window_type="splash"] border pixel 0
 # Tor browser launcher settings
 for_window [title="^Tor Browser Launcher Settings$"] floating enabled
+# Zenity dialog boxes
+for_window [app_id="^zenity$"] floating enabled
 
 ### Idle configuration
 exec swayidle -w \
