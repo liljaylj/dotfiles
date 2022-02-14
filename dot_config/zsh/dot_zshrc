@@ -155,11 +155,11 @@ if [[ -n $UNICODE_256_COLOR ]]
 then
     zi snippet $ZDOTDIR/unicode.p10k.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-    command -v vivid &> /dev/null && export LS_COLORS="$(vivid generate solarized-dark)"
+    command -v vivid &> /dev/null && export LS_COLORS="$(vivid -m 24-bit generate one-dark)"
 else
     zi snippet $ZDOTDIR/ascii.p10k.zsh
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
-    command -v vivid &> /dev/null && export LS_COLORS="$(vivid --color-mode 8-bit generate solarized-dark)"
+    command -v vivid &> /dev/null && export LS_COLORS="$(vivid -m 8-bit generate one-dark)"
 fi
 # zsh-z: enable experimantal uncommon matching
 ZSHZ_UNCOMMON=1
