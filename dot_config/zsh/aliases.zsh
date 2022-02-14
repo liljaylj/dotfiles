@@ -32,7 +32,6 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias cdx='cd "$(xplr)"'
 
 # TODO: remove when wayland support lands
-alias code='code --enable-features=UseOzonePlatform --ozone-platform=wayland --no-sandbox --unity-launch'
 alias marktext='GDK_BACKEND=x11 marktext'
 
 # load aliases from aliases.d dir
