@@ -19,9 +19,10 @@ text_to_type="$(wl-paste -n -t "$clip_type")"
 text_to_type_len="$(wc -m <<<"$text_to_type")"
 text_to_type_max_len=200
 
-[[ "$text_to_type_max_len" -lt "$text_to_type_len" ]] && \
-    which zenity > /dev/null && \
+[[ "$text_to_type_max_len" -lt "$text_to_type_len" ]] && {
+    which zenity > /dev/null
     zenity --width=600 --question --text="Text you are about to cliptype is $text_to_type_len characters long (max. $text_to_type_max_len). Are you sure you want to continue?" || exit 0
+}
 
 text_snippet="$text_to_type"
 text_snippet_max_len=20
