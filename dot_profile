@@ -125,6 +125,9 @@ export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
 export YTT_HOME="$XDG_DATA_HOME/ytt"
 export YTT_REPO='liljaylj/yttasks'
 
+# FZF default arguments
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'"
+
 #
 # Import from file(s)
 set -a
