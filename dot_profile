@@ -108,6 +108,9 @@ export DEBUGINFOD_URLS='https://debuginfod.archlinux.org/'
 export XKB_DEFAULT_LAYOUT='us,ru,kz'
 export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
 
+# OpenAL software sound drivers (Telegram, Minecraft)
+export ALSOFT_DRIVERS='pulse,pipewire'
+
 # QMK home
 export QMK_HOME="$HOME/Development/github.com/liljaylj/qmk_firmware"
 
