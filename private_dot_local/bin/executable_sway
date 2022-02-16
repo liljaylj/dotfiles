@@ -21,7 +21,7 @@ export NO_AT_BRIDGE=1
 # LibreOffice
 export SAL_USE_VCLPLUGIN=gtk3
 # Qt5
-export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORM=wayland
 # export QT_WAYLAND_FORCE_DPI=physical # disabled, because it makes QT apps ugly
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 # Elementary/EFL
