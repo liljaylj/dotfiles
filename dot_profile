@@ -1,5 +1,14 @@
+# XDG dirs
+# Systemwide
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_CONFIG_DIRS="/etc/xdg"
+# User specific
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # PATH
-export PATH="$HOME/.local/bin:$HOME/.config/composer/vendor/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/share/cargo/bin:$HOME/.yarn/bin:$HOME/Android/Sdk/tools/bin:$HOME/Android/Sdk/emulator:$HOME/go/bin:$HOME/.dotnet/tools:$HOME/Flutter/bin:$HOME/.krew/bin:$PATH"
+export PATH="$HOME/.local/bin:$XDG_CONFIG_HOME/composer/vendor/bin:$HOME/.gem/ruby/2.5.0/bin:$XDG_DATA_HOME/cargo/bin:$HOME/.yarn/bin:$HOME/Android/Sdk/tools/bin:$HOME/Android/Sdk/emulator:$HOME/go/bin:$HOME/.dotnet/tools:$HOME/Flutter/bin:$HOME/.krew/bin:$PATH"
 
 # Editor
 export VISUAL=nvim
@@ -22,15 +31,6 @@ export TERMINAL=alacritty
 
 # Browser
 export BROWSER=firefox
-
-# XDG dirs
-# Systemwide
-export XDG_DATA_DIRS="/usr/local/share:/usr/share"
-export XDG_CONFIG_DIRS="/etc/xdg"
-# User specific
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
 
 # XDG override
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
