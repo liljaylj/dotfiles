@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+get_volume() {
+    pactl get-sink-volume "$1" | rg '(\d+)%' -r '$1' -o | awk '{sum+=$1;count+=1} END {printf "%d", sum/count}'
+}
+
+show_volume() {
+    if pactl "get-$nodetype-mute" "$node" | rg -q 'yes'
+    then
+        wobrun 0
+    else
+        wobrun "$(get_volume "$1")"
+    fi
+}
+
+usage() {
+    cat <<EOF >&2
+Usage: $(basename "$0") <source|sink> <-n%|+n%|mute>
+Examples:
+    $(basename "$0") sink +5%       - increase output volume by 5%
+    $(basename "$0") source mute    - mute/unmute (toggle) microphone
+EOF
+    exit 1
+}
+
+[[ "$#" -lt 2 ]] && {
+    usage
+}
+
+case $1 in
+    source)
+        nodetype='source'
+        node='@DEFAULT_SOURCE@'
+        ;;
+    sink)
+        nodetype='sink'
+        node='@DEFAULT_SINK@'
+        ;;
+    *)
+        usage
+        ;;
+esac
+
+case $2 in
+    mute)
+        setcmd="set-$nodetype-mute"
+        setarg='toggle'
+        ;;
+    *)
+        setcmd="set-$nodetype-volume"
+        setarg="$2"
+        ;;
+esac
+
+show_volume "$node"
+pactl "$setcmd" "$node" "$setarg"
+show_volume "$node"
