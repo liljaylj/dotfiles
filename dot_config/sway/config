@@ -24,6 +24,9 @@ set {
     $nag_select     $nag --select
     # Swaylock
     $lock swaylock -f -i ~/Pictures/bg-blurred.jpg
+    # Sleep command
+    $sleep systemctl suspend
+    # $sleep systemctl suspend-then-hibernate
     $pause_lock playerctl -a pause ; $lock
     # xkb config
     $xkb_layout 'us,ru,kz'
@@ -84,6 +87,7 @@ exec swayidle -w \
          timeout 180 '$lock' \
          timeout 170 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
+         timeout 7200 '$sleep' \
          before-sleep '$pause_lock' \
          lock '$lock' \
          unlock 'pkill swaylock' \
@@ -91,7 +95,7 @@ exec swayidle -w \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-bindswitch --locked lid:on exec systemctl suspend
+bindswitch --locked lid:on exec $sleep
 
 seat seat0 hide_cursor 15000
 
