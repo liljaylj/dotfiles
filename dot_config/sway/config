@@ -203,15 +203,15 @@ bindsym --to-code {
     --locked Shift+XF86AudioRaiseVolume exec --no-startup-id playerctl next
 
     # brightness control
-    --locked XF86MonBrightnessUp exec --no-startup-id 'brightness-level-up 10'
-    --locked XF86MonBrightnessDown exec --no-startup-id 'brightness-level-down 10'
-    --locked Shift+XF86MonBrightnessUp exec --no-startup-id 'brightness-level-up 1'
-    --locked Shift+XF86MonBrightnessDown exec --no-startup-id 'brightness-level-down 1'
-    --locked Ctrl+XF86MonBrightnessUp exec --no-startup-id 'brillo -A .1'
-    --locked Ctrl+XF86MonBrightnessDown exec --no-startup-id 'brillo -U .1'
+    --locked XF86MonBrightnessUp exec --no-startup-id 'brightness-level 10%+'
+    --locked XF86MonBrightnessDown exec --no-startup-id 'brightness-level 10%-'
+    --locked Shift+XF86MonBrightnessUp exec --no-startup-id 'brightness-level 25%+'
+    --locked Shift+XF86MonBrightnessDown exec --no-startup-id 'brightness-level 25%-'
+    --locked $mod2+XF86MonBrightnessUp exec --no-startup-id 'brightness-level 1%+'
+    --locked $mod2+XF86MonBrightnessDown exec --no-startup-id 'brightness-level 1%-'
 
-    --locked --whole-window $mod+Shift+button4 exec --no-startup-id 'brightness-level-up 5'
-    --locked --whole-window $mod+Shift+button5 exec --no-startup-id 'brightness-level-down 5'
+    --locked --whole-window $mod+Shift+button4 exec --no-startup-id 'brightness-level 5%+'
+    --locked --whole-window $mod+Shift+button5 exec --no-startup-id 'brightness-level 5%-'
 
     # window opacity
     --whole-window $mod+$mod2+button4 opacity plus 0.01
