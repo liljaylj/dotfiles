@@ -6,7 +6,6 @@ screenshot_path=/home/zhanibek/Pictures
 screenshot_name=remmina_%p_%h_%Y%m%d-%H%M%S
 deny_screenshot_clipboard=true
 save_view_mode=true
-use_master_password=false
 unlock_timeout=0
 unlock_password=
 trust_all=false
@@ -84,6 +83,11 @@ rdp_desktopOrientation=0
 recent_VNC=localhost
 rdp_disable_smooth_scrolling=0
 rdp_reconnect_attempts=
+use_primary_password=false
+lock_connect=false
+lock_edit=false
+enc_mode=1
+audit=false
 
 [ssh_colors]
 background=rgb(213,204,186)
