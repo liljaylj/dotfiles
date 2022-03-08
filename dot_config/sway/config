@@ -57,7 +57,7 @@ output * bg ~/Pictures/bg.jpg fill
 ### Look & feel
 title_align center
 titlebar_border_thickness 0
-titlebar_padding 0
+titlebar_padding 5 0
 # default_border normal 1
 default_border pixel 3
 font pango:sans 8
