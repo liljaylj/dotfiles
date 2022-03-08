@@ -6,11 +6,11 @@ on_exit() {
     msg='Failed to type'
     [[ -n $2 ]] && msg="<b>$msg</b>: $2"
     [[ $1 -ne 0 ]] && \
-        notify-send -u critical 'Cliptype' "$msg" && \
+        notify-send -u critical -t "$3" 'Cliptype' "$msg" && \
         paplay /usr/share/sounds/freedesktop/stereo/dialog-error.oga &
 }
 
-trap 'on_exit $? "${text_snippet:-}"' EXIT
+trap 'on_exit $? "${text_snippet:-}" "$notify_time"' EXIT
 
 sleep_time="${1:-3}"
 notify_time=5000
