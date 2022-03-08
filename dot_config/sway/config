@@ -36,16 +36,20 @@ set {
 ### Start-up
 # Enable numlock on start
 input * xkb_numlock enabled
-# XDG Autostart
-exec dex -a
-# Wayland equivalent of arandr
-exec kanshi
-# Wob - OSD
-# exec wobrun
-# Gammastep indicator
-exec gammastep-indicator
-# # Per-window keyboard layout
-exec swaykbdd
+exec {
+    # XDG Autostart
+    dex -a
+    # Wayland equivalent of arandr
+    kanshi
+    # # Wob - OSD
+    # exec wobrun
+    # Gammastep indicator
+    gammastep-indicator
+    # Per-window keyboard layout
+    swaykbdd
+    # Auto-tiling daemon
+    autotiling
+}
 
 ### Output configuration
 output * bg ~/Pictures/bg.jpg fill
