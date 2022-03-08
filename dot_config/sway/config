@@ -309,7 +309,8 @@ bindsym --to-code {
     $mod+$mod2+$right move workspace output right
     # workspace back and forth switch
     $mod+Tab workspace back_and_forth
-    # --no-repeat $mod2+Tab exec 'sway-wofi-switch-window'
+    --no-repeat $mod2+Tab exec 'swayr switch-to-urgent-or-lru-window'
+    --no-repeat $mod2+Ctrl+Tab exec 'swayr execute-swayr-command'
 
     # Layout stuff
     # ============
