@@ -89,6 +89,10 @@ for_window {
     # CopyQ window
     [app_id="^com\.github\.hluk\.copyq$"] floating enabled
     [title="^CopyQ$"] border pixel 0
+
+    # Icon in title
+    [app_id="Alacritty"] title_format  %title
+    [app_id="firefox"] title_format  %title
 }
 
 ### Idle configuration
