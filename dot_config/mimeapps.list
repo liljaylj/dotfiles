@@ -27,6 +27,7 @@ x-scheme-handler/vnc=org.remmina.Remmina.desktop
 x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
 inode/directory=alacritty-directory.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-J5Z3V0.desktop;
