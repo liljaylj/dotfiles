@@ -55,6 +55,18 @@ interval = 1
 
 [[block]]
 block = "sound"
+driver = "pulseaudio"
+device_kind = "sink"
+on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+show_volume_when_muted = true
+# headphones_indicator = true
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+device_kind = "source"
+on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+show_volume_when_muted = true
 
 [[block]]
 block = "battery"
