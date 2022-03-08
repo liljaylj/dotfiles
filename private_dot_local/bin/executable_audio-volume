@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 
 get_volume() {
-    pactl get-sink-volume "$1" | rg '(\d+)%' -r '$1' -o | awk '{sum+=$1;count+=1} END {printf "%d", sum/count}'
+    pactl "get-$1-volume" "$2" | rg '(\d+)%' -r '$1' -o | awk '{sum+=$1;count+=1} END {printf "%d", sum/count}'
 }
 
 show_volume() {
@@ -11,7 +11,7 @@ show_volume() {
     then
         wobrun 0
     else
-        wobrun "$(get_volume "$1")"
+        wobrun "$(get_volume "$1" "$2")"
     fi
 }
 
@@ -54,6 +54,7 @@ case $2 in
         ;;
 esac
 
-show_volume "$node"
+show_volume "$nodetype" "$node"
+echo "Executing 'pactl $setcmd $node $setarg'"
 pactl "$setcmd" "$node" "$setarg"
-show_volume "$node"
+show_volume "$nodetype" "$node"
