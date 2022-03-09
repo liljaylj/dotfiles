@@ -1,0 +1,96 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+DEFAULT_ARG='15m'
+NOTIFICATION_TIMEOUT='5000'
+
+notify-on-with-time() {
+    notify-send -t "$NOTIFICATION_TIMEOUT" Caffeinated "Caffeinated is <b>ON</b> for $1"
+}
+
+notify-on() {
+    notify-send -t "$NOTIFICATION_TIMEOUT" Caffeinated 'Caffeinated is <b>ON</b>'
+}
+
+notify-off() {
+    notify-send -t "$NOTIFICATION_TIMEOUT" Caffeinated 'Caffeinated is <b>OFF</b>'
+}
+
+killpid() {
+    cafpid=$1
+    if [[ -a "$cafpid" ]]
+    then
+        kill "$(cat "$cafpid")" 2> /dev/null || true
+        rm -f "$cafpid"
+    fi
+}
+
+
+cafpid="$XDG_RUNTIME_DIR/caffeinated.pid"
+
+read -r -a args <<<"$DEFAULT_ARG"
+if [[ $# -gt 0 ]]
+then
+    case $1 in
+        status|s)
+            if pgrep -F "$cafpid" &> /dev/null
+            then
+                notify-on
+            else
+                notify-off
+            fi
+            exit
+            ;;
+        kill|k|x) killpid "$cafpid" ; exit ;;
+        entry|e)
+            read -r -a a <<<"$(zenity --entry --text='Caffeinate timeout' --entry-text="$DEFAULT_ARG")"
+            if [[ ${#a[@]} -gt 0 ]]
+            then
+                args=("${a[@]}")
+            fi
+            ;;
+        toggle)
+            shift 1
+            if [[ -a "$cafpid" ]]
+            then
+                killpid "$cafpid"
+                exit
+            fi
+            if [[ $# -gt 0 ]]
+            then
+                args=("$@")
+            fi
+            ;;
+        *) args=("$@") ;;
+    esac
+fi
+
+if [[ ${args[0],,} = 'inf' || ${args[0],,} = 'infinity' ]]
+then
+    notify-on
+    trap 'notify-off' EXIT
+    caffeinated -p "$cafpid"
+fi
+
+seconds=0
+while read -r n m
+do
+    case $m in
+        h) seconds=$((seconds + n * 3600)) ;;
+        m) seconds=$((seconds + n * 60)) ;;
+        s|'') seconds=$((seconds + n)) ;;
+        *)
+            echo "Wrong time unit '$m'."
+            exit 1
+            ;;
+    esac
+done < <(rg '((\d+)\s*(\S|\D)?)' -o -r '$2 $3' <<<"${args[@]}")
+
+killpid "$cafpid"
+if [[ "$seconds" != 0 ]]
+then
+    notify-on-with-time "$(qalc -t "$seconds seconds")"
+    trap 'notify-off' EXIT
+    timeout --foreground "$seconds" caffeinated -p "$cafpid" || true
+fi
