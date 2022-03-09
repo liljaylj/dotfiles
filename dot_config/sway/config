@@ -308,9 +308,9 @@ bindsym --to-code {
     $mod+$mod2+$up move workspace output up
     $mod+$mod2+$right move workspace output right
     # workspace back and forth switch
-    $mod+Tab workspace back_and_forth
-    --no-repeat $mod2+Tab exec 'swayr switch-to-urgent-or-lru-window'
-    --no-repeat $mod2+Ctrl+Tab exec 'swayr execute-swayr-command'
+    --no-repeat $mod+Tab exec 'swayr switch-to-urgent-or-lru-window'
+    --no-repeat $mod+grave workspace back_and_forth
+    --no-repeat $mod+Escape exec 'swayr switch-window'
 
     # Layout stuff
     # ============
