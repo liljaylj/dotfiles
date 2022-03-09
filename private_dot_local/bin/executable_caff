@@ -6,7 +6,7 @@ DEFAULT_ARG='15m'
 NOTIFICATION_TIMEOUT='5000'
 
 notify-on-with-time() {
-    notify-send -t "$NOTIFICATION_TIMEOUT" Caffeinated "Caffeinated is <b>ON</b> for $1"
+    notify-send -t "$NOTIFICATION_TIMEOUT" Caffeinated "Caffeinated is <b>ON</b> for <b>$1</b>"
 }
 
 notify-on() {
