@@ -33,24 +33,7 @@ read -r -a args <<<"$DEFAULT_ARG"
 if [[ $# -gt 0 ]]
 then
     case $1 in
-        status|s)
-            if pgrep -F "$cafpid" &> /dev/null
-            then
-                notify-on
-            else
-                notify-off
-            fi
-            exit
-            ;;
-        kill|k|x) killpid "$cafpid" ; exit ;;
-        entry|e)
-            read -r -a a <<<"$(zenity --entry --text='Caffeinate timeout' --entry-text="$DEFAULT_ARG")"
-            if [[ ${#a[@]} -gt 0 ]]
-            then
-                args=("${a[@]}")
-            fi
-            ;;
-        toggle)
+        toggle|t)
             shift 1
             if [[ -a "$cafpid" ]]
             then
@@ -62,14 +45,43 @@ then
                 args=("$@")
             fi
             ;;
+    esac
+fi
+if [[ $# -gt 0 ]]
+then
+    case $1 in
+        status|s)
+            if pgrep -F "$cafpid" &> /dev/null
+            then
+                notify-on
+            else
+                notify-off
+            fi
+            exit
+            ;;
+        kill|k|x) killpid "$cafpid" ; exit ;;
+        entry|e)
+            shift 1
+            default_text="${*:-$DEFAULT_ARG}"
+            if ! zenity_result="$(zenity --entry --text='Caffeinate timeout' --entry-text="$default_text")"
+            then
+                exit
+            fi
+            read -r -a a <<<"$zenity_result"
+            if [[ ${#a[@]} -gt 0 ]]
+            then
+                args=("${a[@]}")
+            fi
+            ;;
         *) args=("$@") ;;
     esac
 fi
 
 if [[ ${args[0],,} = 'inf' || ${args[0],,} = 'infinity' ]]
 then
-    notify-on
     trap 'notify-off' EXIT
+    killpid "$cafpid"
+    notify-on
     caffeinated -p "$cafpid"
 fi
 
@@ -87,10 +99,10 @@ do
     esac
 done < <(rg '((\d+)\s*(\S|\D)?)' -o -r '$2 $3' <<<"${args[@]}")
 
-killpid "$cafpid"
 if [[ "$seconds" != 0 ]]
 then
-    notify-on-with-time "$(qalc -t "$seconds seconds")"
     trap 'notify-off' EXIT
+    killpid "$cafpid"
+    notify-on-with-time "$(qalc -t "$seconds seconds")"
     timeout --foreground "$seconds" caffeinated -p "$cafpid" || true
 fi

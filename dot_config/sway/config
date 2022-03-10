@@ -243,7 +243,9 @@ bindsym --to-code {
 
     # idle inhibitor
     --no-repeat $mod+o exec 'caff toggle'
-    --no-repeat $mod+Shift+o exec 'caff toggle inf'
+    --no-repeat $mod+Shift+o exec 'caff toggle infinity'
+    --no-repeat $mod+Ctrl+o exec 'caff toggle entry'
+    --no-repeat $mod+$mod2+o exec 'caff status'
 
     # toggle touchpad
     --locked XF86Launch6 input 'type:touchpad' events toggle disabled_on_external_mouse enabled disabled
