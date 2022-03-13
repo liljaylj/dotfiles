@@ -39,16 +39,16 @@ input * xkb_numlock enabled
 exec {
     # XDG Autostart
     dex -a
-    # Wayland equivalent of arandr
+    # Automatic output configuration daemon
     kanshi
-    # # Wob - OSD
-    # exec wobrun
     # Gammastep indicator
     gammastep-indicator
-    # Per-window keyboard layout
+    # Per-window keyboard layout daemon
     swaykbdd
     # Auto-tiling daemon
     autotiling
+    # LRU window-switcher daemon
+    swayrd
 }
 
 ### Output configuration
