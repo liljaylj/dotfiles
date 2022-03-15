@@ -247,6 +247,11 @@ bindsym --to-code {
     --no-repeat $mod+Ctrl+o exec 'caff toggle entry'
     --no-repeat $mod+$mod2+o exec 'caff status'
 
+    # notification daemon mode
+    --no-repeat $mod+$mod2+Ctrl+f exec 'makoctl set-mode default'
+    --no-repeat $mod+$mod2+Ctrl+g exec 'makoctl set-mode grouped'
+    --no-repeat $mod+$mod2+Ctrl+d exec 'makoctl set-mode dnd'
+
     # toggle touchpad
     --locked XF86Launch6 input 'type:touchpad' events toggle disabled_on_external_mouse enabled disabled
 
