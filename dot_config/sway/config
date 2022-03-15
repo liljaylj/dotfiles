@@ -249,7 +249,7 @@ bindsym --to-code {
 
     # notification daemon mode
     --no-repeat $mod+$mod2+Ctrl+f exec 'makoctl set-mode default'
-    --no-repeat $mod+$mod2+Ctrl+g exec 'makoctl set-mode grouped'
+    --no-repeat $mod+$mod2+Ctrl+g exec 'makoctl set-mode ungrouped'
     --no-repeat $mod+$mod2+Ctrl+d exec 'makoctl set-mode dnd'
 
     # dismiss last notification
