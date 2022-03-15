@@ -252,6 +252,15 @@ bindsym --to-code {
     --no-repeat $mod+$mod2+Ctrl+g exec 'makoctl set-mode grouped'
     --no-repeat $mod+$mod2+Ctrl+d exec 'makoctl set-mode dnd'
 
+    # dismiss last notification
+    $mod+Ctrl+d exec 'makoctl dismiss'
+
+    # dismiss last notification group
+    $mod+Ctrl+g exec 'makoctl dismiss -g'
+
+    # dismiss last notification
+    $mod+Ctrl+a exec 'makoctl dismiss -a'
+
     # toggle touchpad
     --locked XF86Launch6 input 'type:touchpad' events toggle disabled_on_external_mouse enabled disabled
 
