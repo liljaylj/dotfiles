@@ -7,6 +7,12 @@ background-color=#285577ee
 text-color=#ffffffee
 border-color=#4c7899ee
 
+group-by=app-name
+
+on-button-left=invoke-default-action
+on-button-middle=dismiss-group
+on-button-right=dismiss
+
 [urgency=low]
 background-color=#3e4f5cee
 text-color=#aaaaaaee
@@ -21,6 +27,9 @@ border-color=#aa0000ee
 default-timeout=1000
 group-by=category
 format=<b>Volume: %s%%</b>
+
+[mode=ungrouped]
+group-by=none
 
 [mode=dnd]
 invisible=1
