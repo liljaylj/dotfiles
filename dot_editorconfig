@@ -19,7 +19,7 @@ trim_trailing_whitespace = false
 ; [{Makefile,PKGBUILD}]
 ; indent_style = tab
 
-[*.{install,go}]
+[*.{install,go,mod}]
 indent_style = tab
 
 [*.{scala,sc,sbt,nix}]
