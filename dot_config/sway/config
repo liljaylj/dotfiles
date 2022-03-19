@@ -34,8 +34,6 @@ set {
 }
 
 ### Start-up
-# Enable numlock on start
-input * xkb_numlock enabled
 exec {
     # XDG Autostart
     dex -a
@@ -128,8 +126,8 @@ floating_modifier $mod normal
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input 'type:touchpad' {
 # Touchpad
+input 'type:touchpad' {
     accel_profile       adaptive
     click_method        clickfinger
     drag                enabled
@@ -144,8 +142,9 @@ input 'type:touchpad' {
     tap_button_map      lrm
 }
 
-input 'type:keyboard' {
 # Keyboard
+input 'type:keyboard' {
+    xkb_numlock         enabled
     xkb_layout          $xkb_layout
     xkb_numlock         enabled
     xkb_options         $xkb_option
