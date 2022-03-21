@@ -78,6 +78,12 @@ full_threshold = 79
 block = "taskwarrior"
 
 [[block]]
+block = "custom"
+command = ''' curl -s 'https://codestats.net/api/users/liljaylj' | jq -r '" \(.new_xp)"' '''
+on_click = "xdg-open https://codestats.net/users/liljaylj"
+interval = 300
+
+[[block]]
 block = "time"
 interval = 5
 format = "%a %d/%m %R"
