@@ -38,8 +38,6 @@ exec {
     gammastep-indicator
     # Auto-tiling daemon
     # autotiling
-    # LRU window-switcher daemon
-    # swayrd
     # Layout switcher bind manager
     layout-switcher-binder
 }
