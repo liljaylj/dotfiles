@@ -143,6 +143,9 @@ input 'type:keyboard' {
 # Basics:
 #
 bindsym --to-code {
+    --no-repeat --locked $mod+bracketleft input 'type:keyboard' xkb_switch_layout 0
+    --no-repeat --locked $mod+bracketright input 'type:keyboard' xkb_switch_layout 1
+
     --no-repeat $mod+p exec '~/.local/bin/sway-command'
     --no-repeat $mod+Shift+t exec '~/.local/bin/cliptype 2'
 
