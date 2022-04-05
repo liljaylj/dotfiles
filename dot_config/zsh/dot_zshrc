@@ -103,8 +103,6 @@ zi ice depth=1; zi light romkatv/powerlevel10k
 [[ -f /usr/share/fzf-git-bindings/key-binding.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/fzf-git-bindings/key-binding.zsh
 }
-# z
-zi ice wait lucid; zi load agkozak/zsh-z
 # pkgfile
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && {
     zi ice wait lucid; zi snippet /usr/share/doc/pkgfile/command-not-found.zsh
@@ -126,6 +124,11 @@ at_comp_load() {
     # aws cli completions
     [[ -x /usr/bin/aws_completer ]] && {
         complete -C '/usr/bin/aws_completer' aws
+    }
+
+    [[ -x /usr/bin/zoxide ]] && {
+        eval "$(/usr/bin/zoxide init --cmd=j zsh)"
+        zinit ice wait lucid; zinit light mellbourn/zabb
     }
 }
 # syntax highlighting, completions and autosuggestions
