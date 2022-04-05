@@ -38,8 +38,6 @@ exec {
     gammastep-indicator
     # Auto-tiling daemon
     # autotiling
-    # Layout switcher bind manager
-    layout-switcher-binder
 }
 
 ### Output configuration
