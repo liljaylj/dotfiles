@@ -1,4 +1,3 @@
-
 # Is unicode and 256-color supported by terminal
 # Note: basically it only checks if terminal is getty
 grep -Eq '(^dumb|linux$)' <<<"$TERM" || export UNICODE_256_COLOR=1
@@ -19,7 +18,7 @@ ZINIT[COMPINIT_OPTS]='-C'
 #     zmodload zdharma_continuum/zinit
 # fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -226,4 +225,6 @@ hash -d gl="$HOME/Development/gitlab.com"
 hash -d gll="$HOME/Development/gitlab.com/zhanibek"
 hash -d gh="$HOME/Development/github.com"
 hash -d ghl="$HOME/Development/github.com/liljaylj"
+hash -d bb="$HOME/Development/bitbucket.org"
+hash -d bbl="$HOME/Development/bitbucket.org/liljaylj"
 hash -d aur="$HOME/Development/aur.archlinux.org"
