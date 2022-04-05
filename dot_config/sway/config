@@ -44,6 +44,8 @@ exec {
     # autotiling
     # LRU window-switcher daemon
     # swayrd
+    # Layout switcher bind manager
+    layout-switcher-binder
 }
 
 ### Output configuration
@@ -161,8 +163,6 @@ bindsym --to-code {
     --no-repeat $mod+Shift+i exec '~/.local/bin/pick-emoji-name'
 
     --no-repeat $mod+Shift+d exec 'wofi -S run'
-
-    --locked --no-repeat $mod+Space exec '~/.local/bin/layout-switcher'
 
     # Start apps
     # ==========

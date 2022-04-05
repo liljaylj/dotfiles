@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+keybind="${1:-Mod4+Space}"
+
+getkbd() {
+    swaymsg -t get_inputs | jq -r '.[] | select(.type? == "keyboard") | .identifier' | head -1
+}
+
+unbind() {
+    swaymsg "bindsym --to-code --no-repeat --locked $keybind noop"
+}
+
+bindnew() {
+    swaymsg "bindsym --to-code --no-repeat --locked $keybind input '$1' xkb_switch_layout next"
+}
+
+subscribe() {
+    swaymsg -m -t subscribe '["input"]' | jq --unbuffered 'select(.change == "removed" and .input.type == "keyboard" and .input.identifier == "'"$kbd"'") | .input.identifier' | while read -r _
+    do
+        unbind
+        kbd="$(getkbd)"
+        bindnew "$kbd"
+        return
+    done
+}
+
+unbind
+kbd="$(getkbd)"
+bindnew "$kbd"
+
+while true
+do
+    subscribe
+done
