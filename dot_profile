@@ -183,6 +183,9 @@ grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1
 # Import environment to systemctl user session
 systemctl --user import-environment PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME ZDOTDIR JAVA_HOME
 
+# Cleanup
+unset -f append_envvar
+
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
     exec sway
