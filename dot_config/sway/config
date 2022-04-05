@@ -447,6 +447,3 @@ exec /usr/lib/sway-systemd/assign-cgroups.py
 exec /usr/lib/sway-systemd/session.sh --with-cleanup
 
 # include /etc/sway/config.d/*
-
-# exec 'systemctl --user import-environment PATH'
-# exec "hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd"

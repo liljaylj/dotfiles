@@ -151,6 +151,8 @@ set +a
 # Is running under WSL
 grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1
 
+# Import environment to systemctl user session
+systemctl --user import-environment
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
