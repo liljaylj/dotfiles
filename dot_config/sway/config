@@ -36,8 +36,6 @@ exec {
     dex -a
     # Gammastep indicator
     gammastep-indicator
-    # Per-window keyboard layout daemon
-    swaykbdd
     # Auto-tiling daemon
     # autotiling
     # LRU window-switcher daemon
