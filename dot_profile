@@ -11,15 +11,31 @@ append_envvar() {
 
 # XDG dirs
 # Systemwide
-export XDG_DATA_DIRS="/usr/local/share:/usr/share"
-export XDG_CONFIG_DIRS="/etc/xdg"
+append_envvar XDG_DATA_DIRS '/usr/share'
+append_envvar XDG_DATA_DIRS '/usr/local/share'
+export XDG_DATA_DIRS
+append_envvar XDG_CONFIG_DIRS '/etc/xdg'
+export XDG_CONFIG_DIRS
 # User specific
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # PATH
-export PATH="$HOME/.local/bin:$XDG_CONFIG_HOME/composer/vendor/bin:$HOME/.gem/ruby/2.5.0/bin:$XDG_DATA_HOME/cargo/bin:$HOME/.yarn/bin:$HOME/Android/Sdk/tools/bin:$HOME/Android/Sdk/emulator:$HOME/go/bin:$HOME/.dotnet/tools:$HOME/Flutter/bin:$HOME/.krew/bin:$XDG_DATA_HOME/npm/bin:$PATH"
+append_envvar PATH "$HOME/.local/bin"
+append_envvar PATH "$XDG_CONFIG_HOME/composer/vendor/bin"
+append_envvar PATH "$HOME/.gem/ruby/3.0.0/bin"
+append_envvar PATH "$XDG_DATA_HOME/cargo/bin"
+append_envvar PATH "$HOME/.yarn/bin"
+append_envvar PATH "$HOME/Android/Sdk/tools/bin"
+append_envvar PATH "$HOME/Android/Sdk/emulator"
+append_envvar PATH "$HOME/go/bin"
+append_envvar PATH "$HOME/go/bin"
+append_envvar PATH "$HOME/.dotnet/tools"
+append_envvar PATH "$HOME/Flutter/bin"
+append_envvar PATH "$HOME/.krew/bin"
+append_envvar PATH "$XDG_DATA_HOME/npm/bin"
+export PATH
 
 # Editor
 export VISUAL=nvim
@@ -47,7 +63,9 @@ export BROWSER=firefox
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # GOPATH
-export GOPATH=$HOME/go:$HOME/Development/go
+append_envvar GOPATH "$HOME/go"
+append_envvar GOPATH "$HOME/Development/go"
+export GOPATH
 
 # Firefox
 export MOZ_WEBRENDER=1
@@ -144,7 +162,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-a:select-all,ctrl-d:dese
 set -a
 
 # User dirs
-. "$HOME/.config/user-dirs.dirs"
+source "$HOME/.config/user-dirs.dirs"
 
 # Source host dependent profile(s)
 if [ -d "$XDG_CONFIG_HOME/profile.d" ] && [ -r "$XDG_CONFIG_HOME/profile.d" ]
