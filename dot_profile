@@ -1,3 +1,14 @@
+append_envvar() {
+    eval "val=\"\$$1\""
+    case ":$val:" in
+        *:"$2":*)
+            ;;
+        *)
+            eval "$1=\"\${$1:+\$$1:}$2\""
+            ;;
+    esac
+}
+
 # XDG dirs
 # Systemwide
 export XDG_DATA_DIRS="/usr/local/share:/usr/share"
