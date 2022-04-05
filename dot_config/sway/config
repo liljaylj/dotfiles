@@ -34,8 +34,6 @@ set {
 exec {
     # XDG Autostart
     dex -a
-    # Automatic output configuration daemon
-    kanshi
     # Gammastep indicator
     gammastep-indicator
     # Per-window keyboard layout daemon
