@@ -26,8 +26,8 @@ set {
     $sleep systemctl suspend
     # $sleep systemctl suspend-then-hibernate
     # xkb config
-    $xkb_layout 'us,ru,kz'
-    $xkb_option 'grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
+    $xkb_layout 'us,kz(ruskaz)'
+    $xkb_option 'grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
 }
 
 ### Start-up

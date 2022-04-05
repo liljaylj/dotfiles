@@ -105,8 +105,8 @@ export RUSTFLAGS="-C target-cpu=native"
 export DEBUGINFOD_URLS='https://debuginfod.archlinux.org/'
 
 # XWayland keyboard config
-export XKB_DEFAULT_LAYOUT='us,ru,kz'
-export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
+export XKB_DEFAULT_LAYOUT='us,kz(ruskaz)'
+export XKB_DEFAULT_OPTIONS='grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
 
 # OpenAL software sound drivers (Telegram, Minecraft)
 export ALSOFT_DRIVERS='pulse,pipewire'
