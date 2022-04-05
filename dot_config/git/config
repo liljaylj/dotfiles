@@ -46,6 +46,10 @@
     insteadOf = gh:
 [url "git@github.com:liljaylj/"]
     insteadOf = ghl:
+[url "git@bitbucket.org:"]
+    insteadOf = bb:
+[url "git@bitbucket.org:liljaylj/"]
+    insteadOf = bbl:
 [url "ssh://aur@aur.archlinux.org/"]
     insteadOf = aur:
 
@@ -61,6 +65,8 @@
     path = ~/Development/github.com/.gitconfig
 [includeIf "gitdir:~/Development/aur.archlinux.org/"]
     path = ~/Development/aur.archlinux.org/.gitconfig
+[includeIf "gitdir:~/Development/bitbucket.org/"]
+    path = ~/Development/bitbucket.org/.gitconfig
 
 [alias]
     gi = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi"
