@@ -35,6 +35,7 @@ exec {
     # XDG Autostart
     dex -a
     # Gammastep indicator
+    # TODO: make systemd user service
     gammastep-indicator
     # Auto-tiling daemon
     # autotiling
