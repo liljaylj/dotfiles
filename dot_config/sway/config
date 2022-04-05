@@ -41,7 +41,7 @@ exec {
     # Per-window keyboard layout daemon
     swaykbdd
     # Auto-tiling daemon
-    autotiling
+    # autotiling
     # LRU window-switcher daemon
     swayrd
 }
