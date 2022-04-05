@@ -29,7 +29,7 @@ alias open='xdg-open'
 alias lg='lazygit'
 alias ch='chezmoi'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias cdx='cd "$(xplr)"'
+alias xcd='cd "$(xplr --print-pwd-as-result)"'
 alias xkbdisplay='GDK_BACKEND=x11 gkbd-keyboard-display -l'
 
 # TODO: remove when wayland support lands
