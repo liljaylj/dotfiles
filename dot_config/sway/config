@@ -43,7 +43,7 @@ exec {
     # Auto-tiling daemon
     # autotiling
     # LRU window-switcher daemon
-    swayrd
+    # swayrd
 }
 
 ### Output configuration
