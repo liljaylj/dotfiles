@@ -1,8 +1,8 @@
-lua require('init')
+" lua require('main')
 
 " Map <Leader> key to space
 "map <Space> <Leader>
-let mapleader="\<Space>"
+" let mapleader="\<Space>"
 
 " Hard mode
 nnoremap <Left>         :echoe "Use h"<CR>
@@ -40,7 +40,6 @@ set incsearch " Enable incremental search
 set nowrap " Disable word wrap
 set foldmethod=marker
 set bg=dark
-set tgc " 24-color support
 
 " Move in insert/command mode
 inoremap <C-h> <Left>
@@ -216,7 +215,7 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'editorconfig/editorconfig-vim'
+" Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -228,6 +227,7 @@ Plug 'wellle/targets.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'thinca/vim-visualstar'
 Plug 'chrisbra/matchit'
+Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
 
 if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
@@ -235,13 +235,18 @@ if !exists('g:vscode')
     Plug 'junegunn/vim-peekaboo'
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-fugitive'
-    Plug 'easymotion/vim-easymotion'
+    " Plug 'easymotion/vim-easymotion'
     " Plug 'phaazon/hop.nvim'
     Plug 'dense-analysis/ale'
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'psliwka/vim-smoothie'
     Plug 'simnalamburt/vim-mundo'
+
+    " LSP
+    Plug 'neovim/nvim-lspconfig'
+    " DAP
+    Plug 'mfussenegger/nvim-dap'
 else
     " plugins for vscode
     Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
@@ -260,6 +265,10 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " Easymotion
 let g:EasyMotion_keys = 'fjdksla;ghrueiwoqptyvmzxcbn'
+
+" CodeStats API settings
+let g:codestats_api_key = 'SFMyNTY.Ykdsc2FtRjViR289IyNNVEF6TkRRPQ.4oO9No_VmXptHdeB4VNcMgwJfBk5t1fbrxjfB6FrdBU'
+let g:codestats_api_url = 'http://localhost:39332/'
 
 if !exists('g:vscode')
     " mundo mapping
@@ -296,4 +305,7 @@ if !exists('g:vscode')
     " OSC52 yank
     vnoremap <leader>c :OSCYank<CR>
     nnoremap <leader>c <Plug>OSCYank
+
+    " LSP config
+    lua require'lspconfig'.pyright.setup{}
 endif
