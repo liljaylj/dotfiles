@@ -19,10 +19,12 @@ set {
     $nag_select     $nag --select
     # Swaylock
     $lock swaylock -f -i ~/Pictures/bg-blurred.jpg
+    $bindsym_lock $lock ; input "type:keyboard" xkb_switch_layout 0
+    $swayidle_lock $lock ; swaymsg input "type:keyboard" xkb_switch_layout 0
+    $pause_lock playerctl -a pause ; $swayidle_lock
     # Sleep command
     $sleep systemctl suspend
     # $sleep systemctl suspend-then-hibernate
-    $pause_lock playerctl -a pause ; $lock
     # xkb config
     $xkb_layout 'us,ru,kz'
     $xkb_option 'grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
@@ -86,12 +88,12 @@ for_window {
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 180 '$lock' \
+         timeout 180 '$swayidle_lock' \
          timeout 170 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          timeout 7200 '$sleep' \
          before-sleep '$pause_lock' \
-         lock '$lock' \
+         lock '$swayidle_lock' \
          unlock 'pkill swaylock' \
          idlehint 300
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -184,7 +186,7 @@ bindsym --to-code {
     --whole-window $mod+$mod2+button2 exec 'sway-kill-focused KILL'
 
     # screen lock
-    $mod2+Ctrl+L exec $lock
+    $mod2+Ctrl+L exec $bindsym_lock
 
     # copyq
     $mod+$mod2+v exec copyq toggle
