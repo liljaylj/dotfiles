@@ -7,11 +7,6 @@ set {
     # - Mod4 = Meta
     $mod    Mod4
     $mod2   Mod1
-    # Home row direction keys, like vim
-    $left   H
-    $down   J
-    $up     K
-    $right  L
     # Terminal emulator
     $term   alacritty
     # Your preferred application launcher
@@ -282,15 +277,15 @@ bindsym --to-code {
     # Moving around
     # =============
     # Move your focus around
-    $mod+$left  focus left
-    $mod+$down  focus down
-    $mod+$up    focus up
-    $mod+$right focus right
+    $mod+h focus left
+    $mod+j focus down
+    $mod+k focus up
+    $mod+l focus right
     # _move_ the focused window with the same, but add Shift
-    $mod+Shift+$left move left
-    $mod+Shift+$down move down
-    $mod+Shift+$up move up
-    $mod+Shift+$right move right
+    $mod+Shift+h move left
+    $mod+Shift+j move down
+    $mod+Shift+k move up
+    $mod+Shift+l move right
 
     # Workspaces
     # ==========
@@ -318,10 +313,10 @@ bindsym --to-code {
     $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    $mod+$mod2+$left move workspace output left
-    $mod+$mod2+$down move workspace output down
-    $mod+$mod2+$up move workspace output up
-    $mod+$mod2+$right move workspace output right
+    $mod+$mod2+h move workspace output left
+    $mod+$mod2+j move workspace output down
+    $mod+$mod2+k move workspace output up
+    $mod+$mod2+l move workspace output right
     # workspace back and forth switch
     --no-repeat $mod+Tab exec 'swayr switch-to-urgent-or-lru-window'
     --no-repeat $mod+grave workspace back_and_forth
@@ -341,7 +336,7 @@ bindsym --to-code {
     # Make the current focus fullscreen
     $mod+f fullscreen
     # Toggle the current focus between tiling and floating mode
-    $mod+Shift+space floating toggle
+    $mod+Shift+Space floating toggle
     # Swap focus between the tiling area and the floating area
     # TODO: solve conflict with keyboard layout change
     $mod+Ctrl+Space focus mode_toggle
@@ -371,20 +366,20 @@ mode "resize" {
     # up will shrink the containers height
     # down will grow the containers height
     bindsym --to-code {
-        $left resize shrink width 50px
-        $down resize grow height 50px
-        $up resize shrink height 50px
-        $right resize grow width 50px
+        h resize shrink width 50px
+        j resize grow height 50px
+        k resize shrink height 50px
+        l resize grow width 50px
 
-        $mod+$left resize shrink width 10px
-        $mod+$down resize grow height 10px
-        $mod+$up resize shrink height 10px
-        $mod+$right resize grow width 10px
+        $mod+h resize shrink width 10px
+        $mod+j resize grow height 10px
+        $mod+k resize shrink height 10px
+        $mod+l resize grow width 10px
 
-        $mod+Shift+$left resize shrink width 1px
-        $mod+Shift+$down resize grow height 1px
-        $mod+Shift+$up resize shrink height 1px
-        $mod+Shift+$right resize grow width 1px
+        $mod+Shift+h resize shrink width 1px
+        $mod+Shift+j resize grow height 1px
+        $mod+Shift+k resize shrink height 1px
+        $mod+Shift+l resize grow width 1px
 
         # return to default mode
         Return mode "default"
