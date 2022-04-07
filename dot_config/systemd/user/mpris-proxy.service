@@ -6,6 +6,7 @@ After=bluetooth.service
 [Service]
 Type=simple
 ExecStart=/usr/bin/mpris-proxy
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
