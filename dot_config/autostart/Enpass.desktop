@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Enpass
+Exec=env QT_QPA_PLATFORM=xcb /opt/enpass/Enpass -minimize %U
+Icon=enpass.png
+Comment=The best password manager
+X-GNOME-Autostart-Delay=12
+X-GNOME-Autostart-enabled=true
