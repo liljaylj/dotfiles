@@ -56,6 +56,8 @@ commit-message:
         - revert
         - style
         - test
+        # for vscode sync settings extension
+        - profile
     scope:
         # Define supported scopes, if blank, scope will not be validated, if not, only scope listed will be valid.
         # Don't forget to add "" on your list if you need to define scopes and keep it optional.
