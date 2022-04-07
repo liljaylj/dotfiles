@@ -30,15 +30,6 @@ set {
     $xkb_option 'grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
 }
 
-### Start-up
-exec {
-    # Gammastep indicator
-    # TODO: make systemd user service
-    gammastep-indicator
-    # Auto-tiling daemon
-    # autotiling
-}
-
 ### Output configuration
 output * bg ~/Pictures/bg.jpg fill
 
