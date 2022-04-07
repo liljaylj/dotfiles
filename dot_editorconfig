@@ -8,7 +8,7 @@ indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{xml,html,cshtml,yaml,yml,pug,csv,json,conf,toml}]
+[*.{xml,html,cshtml,pug,csv,json,conf,toml}]
 indent_size = 2
 insert_final_newline = false
 
@@ -22,7 +22,7 @@ trim_trailing_whitespace = false
 [*.{install,go,mod}]
 indent_style = tab
 
-[*.{scala,sc,sbt,nix,lua,ts,js,tsx,jsx,vue}]
+[*.{scala,sc,sbt,nix,lua,yaml,yml,ts,js,tsx,jsx,vue}]
 indent_size = 2
 
 [Vagrantfile]
