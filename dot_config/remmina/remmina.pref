@@ -48,13 +48,13 @@ default_mode=0
 tab_mode=0
 fullscreen_toolbar_visibility=0
 auto_scroll_step=10
-hostkey=65514
+hostkey=65027
 shortcutkey_fullscreen=102
 shortcutkey_autofit=49
 shortcutkey_nexttab=65363
 shortcutkey_prevtab=65361
 shortcutkey_scale=115
-shortcutkey_grab=65514
+shortcutkey_grab=65027
 shortcutkey_multimon=65365
 shortcutkey_viewonly=109
 shortcutkey_screenshot=65481
@@ -89,6 +89,7 @@ lock_edit=false
 enc_mode=1
 audit=false
 confirm_close=true
+rdp_kbd_remap=
 
 [ssh_colors]
 background=rgb(213,204,186)
