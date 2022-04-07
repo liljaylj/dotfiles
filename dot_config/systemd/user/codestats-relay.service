@@ -1,7 +1,5 @@
 [Unit]
 Description=Relay HTTP service for codestats.net which returns immidiately to prevent lags in editors
-PartOf=sway-session.target
-After=sway-session.target
 
 [Service]
 Type=simple
@@ -9,4 +7,4 @@ ExecStart=/usr/bin/bash -c 'codestats-relay'
 Restart=on-failure
 
 [Install]
-WantedBy=sway-session.target
+WantedBy=default.target
