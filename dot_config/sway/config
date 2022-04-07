@@ -72,14 +72,15 @@ for_window {
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 180 '$swayidle_lock' \
-         timeout 170 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         timeout 7200 '$sleep' \
-         before-sleep '$pause_lock' \
-         lock '$swayidle_lock' \
-         unlock 'pkill swaylock' \
-         idlehint 300
+        timeout 180 '$swayidle_lock' \
+        timeout 170 'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"' \
+        timeout 7200 '$sleep' \
+        before-sleep '$pause_lock' \
+        after-resume 'swaymsg "output * dpms on"' \
+        lock '$swayidle_lock' \
+        unlock 'pkill swaylock' \
+        idlehint 300
 
 seat seat0 hide_cursor 15000
 
