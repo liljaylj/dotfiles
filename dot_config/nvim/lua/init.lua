@@ -1,6 +1,0 @@
-
-
-
-
-
-vim.o.termguicolors = true

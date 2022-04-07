@@ -1,9 +1,6 @@
 -- shortcuts
-local fn = vim.fn
-local api = vim.api
-local g = vim.g
-local cmd = vim.cmd
-local keymap = api.nvim_set_keymap
+local cmd = vim.cmd  -- execute VimScript
+local g = vim.g      -- g: global variables
 
 -- Base config
 g.mapleader = ' '

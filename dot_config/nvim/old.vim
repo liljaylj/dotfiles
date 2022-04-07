@@ -216,18 +216,18 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'chaoren/vim-wordmotion'
-Plug 'machakann/vim-highlightedyank'
-Plug 'vim-scripts/ReplaceWithRegister'
+" Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-commentary'
+" Plug 'chaoren/vim-wordmotion'
+" Plug 'machakann/vim-highlightedyank'
+" Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'wikitopian/hardmode'
-Plug 'wellle/targets.vim'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'thinca/vim-visualstar'
-Plug 'chrisbra/matchit'
-Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+" Plug 'wellle/targets.vim'
+" Plug 'michaeljsmith/vim-indent-object'
+" Plug 'thinca/vim-visualstar'
+" Plug 'chrisbra/matchit'
+" Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
 
 if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
@@ -255,10 +255,10 @@ endif
 call plug#end()
 
 " Wordmotion prefix key
-let g:wordmotion_prefix = '<Leader>'
+" let g:wordmotion_prefix = '<Leader>'
 
 " Highlightedyank duration
-let g:highlightedyank_highlight_duration = 300
+" let g:highlightedyank_highlight_duration = 300
 
 " Hard mode toggle
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
@@ -266,9 +266,9 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 " Easymotion
 let g:EasyMotion_keys = 'fjdksla;ghrueiwoqptyvmzxcbn'
 
-" CodeStats API settings
-let g:codestats_api_key = 'SFMyNTY.Ykdsc2FtRjViR289IyNNVEF6TkRRPQ.4oO9No_VmXptHdeB4VNcMgwJfBk5t1fbrxjfB6FrdBU'
-let g:codestats_api_url = 'http://localhost:39332/'
+" " CodeStats API settings
+" let g:codestats_api_key = 'SFMyNTY.Ykdsc2FtRjViR289IyNNVEF6TkRRPQ.4oO9No_VmXptHdeB4VNcMgwJfBk5t1fbrxjfB6FrdBU'
+" let g:codestats_api_url = 'http://localhost:39332/'
 
 if !exists('g:vscode')
     " mundo mapping
