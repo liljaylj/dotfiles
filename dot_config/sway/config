@@ -54,7 +54,7 @@ for_window {
     [class="jetbrains-idea-ce" title="win0"] floating enabled, border pixel 0
     [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enabled
     # XP-Pen Pentablet config
-    [class="pentablet"] floating enabled, move scratchpad
+    [class="pentablet"] floating enabled
     # Krita splash screen
     [class="krita" window_type="splash"] border pixel 0
     # Tor browser launcher settings
