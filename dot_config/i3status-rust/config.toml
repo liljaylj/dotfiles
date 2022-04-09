@@ -1,6 +1,7 @@
 theme = "native"
 icons = "awesome"
 
+# DualShock 4
 [[block]]
 block = "battery"
 driver = "upower"
@@ -9,6 +10,7 @@ allow_missing = true
 hide_missing = true
 icons_format = ' '
 
+# M590 Logitech Mouse
 [[block]]
 block = "bluetooth"
 mac = "F2:89:D1:3F:C6:77"
@@ -34,6 +36,7 @@ format_swap = "{swap_used_percents}"
 block = "cpu"
 interval = 1
 
+# Audio output volume
 [[block]]
 block = "sound"
 driver = "pulseaudio"
@@ -41,6 +44,7 @@ device_kind = "sink"
 on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 show_volume_when_muted = true
 
+# Microphone volume
 [[block]]
 block = "sound"
 driver = "pulseaudio"
@@ -57,6 +61,7 @@ full_threshold = 79
 [[block]]
 block = "taskwarrior"
 
+# CodeStats score for last 12 hours
 [[block]]
 block = "custom"
 command = ''' curl -s 'https://codestats.net/api/users/liljaylj' | jq -r '" \(.new_xp)"' '''
