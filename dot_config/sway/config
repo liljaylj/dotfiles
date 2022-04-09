@@ -143,7 +143,8 @@ bindsym --to-code {
     # type clipboard content
     --no-repeat $mod+Shift+t exec '~/.local/bin/cliptype 2'
 
-    $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+    # color picker
+    $mod+Ctrl+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
     # pick emoji
     --no-repeat $mod+i exec '~/.local/bin/pick-emoji'
