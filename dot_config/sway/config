@@ -208,6 +208,7 @@ bindsym --to-code {
     --locked Shift+XF86AudioMute exec 'playerctl play-pause'
     --locked Shift+XF86AudioLowerVolume exec 'playerctl previous'
     --locked Shift+XF86AudioRaiseVolume exec 'playerctl next'
+    --locked $mod+Shift+apostrophe exec 'playerctl play-pause'
     --locked $mod+Shift+bracketleft exec 'playerctl previous'
     --locked $mod+Shift+bracketright exec 'playerctl next'
     --locked $mod+Shift+slash exec 'playerctld shift && show-player-order'
