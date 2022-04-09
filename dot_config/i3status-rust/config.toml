@@ -1,6 +1,13 @@
 theme = "native"
 icons = "awesome"
 
+[[block]]
+block = "battery"
+driver = "upower"
+device = "gaming_input_sony_controller_battery_d0obcoc1ob2o00o81"
+allow_missing = true
+hide_missing = true
+icons_format = ' '
 
 [[block]]
 block = "bluetooth"
