@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NOTIFICATION_TIMEOUT=1000
+
+notify-send -a 'show-current-player' -t "$NOTIFICATION_TIMEOUT" 'New players order' \
+    "$(playerctl -l | awk '{if (length($0) > 30) print substr($0, 1, 28) "…"; else print;}')"
