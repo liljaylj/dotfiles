@@ -133,28 +133,34 @@ input 'type:keyboard' {
 # Basics:
 #
 bindsym --to-code {
+    # test command
+    --no-repeat $mod+p exec '~/.local/bin/sway-command'
+
+    # direct switch xkb layout
     --no-repeat --locked $mod+bracketleft input 'type:keyboard' xkb_switch_layout 0
     --no-repeat --locked $mod+bracketright input 'type:keyboard' xkb_switch_layout 1
 
-    --no-repeat $mod+p exec '~/.local/bin/sway-command'
+    # type clipboard content
     --no-repeat $mod+Shift+t exec '~/.local/bin/cliptype 2'
 
     $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
+    # pick emoji
     --no-repeat $mod+i exec '~/.local/bin/pick-emoji'
+    # pick emoji (name)
     --no-repeat $mod+Shift+i exec '~/.local/bin/pick-emoji-name'
 
+    # wofi menu run command
     --no-repeat $mod+Shift+d exec 'wofi -S run'
 
-    # Start apps
-    # ==========
-    #
     # start your launcher
     --no-repeat $mod+d exec $menu
     --no-repeat Find exec $menu
+
     # start a terminal
     $mod+Return exec $term
     $mod+t exec $term
+
     # Enpass
     $mod+Backslash exec 'dexrun enpass-assistant'
     $mod+Shift+Backslash exec 'dexrun enpass'
@@ -174,10 +180,11 @@ bindsym --to-code {
     $mod+$mod2+v exec copyq toggle
     $mod+Shift+v exec copyq menu
 
-    # audio controls
+    # audio controls (sink)
     --locked XF86AudioMute exec 'audio-volume sink mute'
     --locked XF86AudioLowerVolume exec 'audio-volume sink -5%'
     --locked XF86AudioRaiseVolume exec 'audio-volume sink +5%'
+    # audio controls (source)
     --locked $mod+XF86AudioMute exec 'audio-volume source mute'
     --locked $mod+XF86AudioLowerVolume exec 'audio-volume source -5%'
     --locked $mod+XF86AudioRaiseVolume exec 'audio-volume source +5%'
