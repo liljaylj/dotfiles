@@ -1,32 +1,11 @@
 theme = "native"
 icons = "awesome"
 
-# [[block]]
-# block = "kdeconnect"
-
-# [[block]]
-# block = "music"
-# hide_when_empty = true
-# buttons = ["prev", "play", "next"]
-# max_width = 30
-
-# [[block]]
-# block = "pacman"
-# interval = 600
-# format = "{pacman},{aur}"
-# format_singular = "{both}"
-# format_up_to_date = ""
-# aur_command = "paru -Qua"
-# hide_when_uptodate = true
-# on_click = "alacritty -e 'zsh -c paru'"
 
 [[block]]
 block = "bluetooth"
 mac = "F2:89:D1:3F:C6:77"
 hide_disconnected = true
-
-# [[block]]
-# block = "hueshift"
 
 [[block]]
 block = "disk_space"
@@ -48,18 +27,12 @@ format_swap = "{swap_used_percents}"
 block = "cpu"
 interval = 1
 
-# [[block]]
-# block = "load"
-# interval = 1
-# format = "{1m}"
-
 [[block]]
 block = "sound"
 driver = "pulseaudio"
 device_kind = "sink"
 on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 show_volume_when_muted = true
-# headphones_indicator = true
 
 [[block]]
 block = "sound"
