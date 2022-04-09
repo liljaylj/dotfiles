@@ -78,5 +78,4 @@ block = "keyboard_layout"
 driver = "sway"
 [block.mappings]
 "English (US)" = "EN"
-"Russian (N/A)" = "RU"
-"Kazakh (N/A)" = "KK"
+"Russian (Kazakhstan, with Kazakh)"= "RU"
