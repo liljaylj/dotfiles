@@ -104,7 +104,6 @@ seat seat0 hide_cursor 15000
 input 'type:keyboard' {
     xkb_numlock         enabled
     xkb_layout          $xkb_layout
-    xkb_numlock         enabled
     xkb_options         $xkb_option
 }
 
