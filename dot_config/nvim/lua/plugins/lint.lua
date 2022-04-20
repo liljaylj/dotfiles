@@ -1,4 +1,3 @@
-local autocmd = vim.api.nvim_create_augroup
 
 return {
   init = function(use)
@@ -11,7 +10,7 @@ return {
           sh = {'shellcheck'},
         }
 
-        autocmd({'BufEnter', 'TextChanged', 'InsertLeave'}, {
+        vim.api.nvim_create_autocmd({'BufEnter', 'TextChanged', 'InsertLeave'}, {
           pattern = '<buffer>',
           callback = function()
             lint.try_lint()
