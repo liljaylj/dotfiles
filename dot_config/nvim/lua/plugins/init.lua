@@ -22,6 +22,8 @@ return {
 
       use 'wbthomason/packer.nvim'
 
+      use 'nvim-lua/plenary.nvim'
+
       for _, module in pairs({
         -- neovim
         require('plugins.hop'),
