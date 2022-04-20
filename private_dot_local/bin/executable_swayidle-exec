@@ -1,0 +1,12 @@
+#!/bin/bash
+
+exec swayidle -w \
+    timeout 180 'lock-screen' \
+    timeout 170 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    timeout 7200 'systemctl suspend' \
+    before-sleep 'playerctl -a pause ; lock-screen' \
+    after-resume 'swaymsg "output * dpms on"' \
+    lock 'lock-screen' \
+    unlock 'unlock-screen' \
+    idlehint 300

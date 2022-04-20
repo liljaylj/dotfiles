@@ -1,0 +1,4 @@
+#!/bin/bash
+
+swaylock -f -i ~/Pictures/bg-blurred.jpg
+swaymsg input 'type:keyboard' xkb_switch_layout 0
