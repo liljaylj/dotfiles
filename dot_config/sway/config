@@ -70,20 +70,6 @@ for_window {
     [app_id="firefox"] title_format  %title
 }
 
-### Idle configuration
-exec swayidle -w \
-        timeout 180 '$swayidle_lock' \
-        timeout 170 'swaymsg "output * dpms off"' \
-            resume 'swaymsg "output * dpms on"' \
-        timeout 7200 '$sleep' \
-        before-sleep '$pause_lock' \
-        after-resume 'swaymsg "output * dpms on"' \
-        lock '$swayidle_lock' \
-        unlock 'pkill swaylock' \
-        idlehint 300
-
-seat seat0 hide_cursor 15000
-
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -119,6 +105,8 @@ input 'type:touchpad' {
     tap                 enabled
     tap_button_map      lrm
 }
+
+seat seat0 hide_cursor 15000
 
 # Keyboard
 input 'type:keyboard' {
