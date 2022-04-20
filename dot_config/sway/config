@@ -17,14 +17,6 @@ set {
     $nag_exit       $nag --exit
     $nag_confirm    $nag --confirm
     $nag_select     $nag --select
-    # Swaylock
-    $lock swaylock -f -i ~/Pictures/bg-blurred.jpg
-    $bindsym_lock $lock ; input "type:keyboard" xkb_switch_layout 0
-    $swayidle_lock $lock ; swaymsg input "type:keyboard" xkb_switch_layout 0
-    $pause_lock playerctl -a pause ; $swayidle_lock
-    # Sleep command
-    $sleep systemctl suspend
-    # $sleep systemctl suspend-then-hibernate
     # xkb config
     $xkb_layout 'us,kz(ruskaz)'
     $xkb_option 'grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
@@ -163,7 +155,7 @@ bindsym --to-code {
     --whole-window $mod+$mod2+button2 exec 'sway-kill-focused KILL'
 
     # screen lock
-    $mod2+Ctrl+L exec $bindsym_lock
+    $mod2+Ctrl+L exec lock-screen
 
     # copyq
     $mod+$mod2+v exec copyq toggle
