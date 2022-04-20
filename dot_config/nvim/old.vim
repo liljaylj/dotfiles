@@ -233,20 +233,20 @@ if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
     Plug 'farmergreg/vim-lastplace'
     Plug 'junegunn/vim-peekaboo'
-    Plug 'junegunn/fzf.vim'
+    " Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-fugitive'
     " Plug 'easymotion/vim-easymotion'
     " Plug 'phaazon/hop.nvim'
-    Plug 'dense-analysis/ale'
+    " Plug 'dense-analysis/ale'
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
     Plug 'psliwka/vim-smoothie'
     Plug 'simnalamburt/vim-mundo'
 
     " LSP
-    Plug 'neovim/nvim-lspconfig'
+    " Plug 'neovim/nvim-lspconfig'
     " DAP
-    Plug 'mfussenegger/nvim-dap'
+    " Plug 'mfussenegger/nvim-dap'
 else
     " plugins for vscode
     Plug 'asvetliakov/vim-easymotion', { 'as': 'vsc-easymotion' }
@@ -307,5 +307,5 @@ if !exists('g:vscode')
     nnoremap <leader>c <Plug>OSCYank
 
     " LSP config
-    lua require'lspconfig'.pyright.setup{}
+    " lua require'lspconfig'.pyright.setup{}
 endif

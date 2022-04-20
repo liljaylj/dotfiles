@@ -1,17 +1,20 @@
 local fn = vim.fn
-local cmd = vim.cmd
 
 local packer_dir = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 local packer_repo = 'https://github.com/wbthomason/packer.nvim'
 
+-- TODO: create autocmd to automatically source and PackerCompile when any of plugin conf files is edited (BufWrite?)
+
 return {
-  init = function(use)
+  init = function()
     -- Enable built-in plugins
-    cmd 'packadd matchit'
+    vim.cmd 'packadd matchit'
 
     -- Bootstrap Packer
+    local packer_bootstrap = false
     if fn.empty(fn.glob(packer_dir)) > 0 then
-      packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', packer_repo, packer_dir})
+      fn.system({'git', 'clone', '--depth', '1', packer_repo, packer_dir})
+      packer_bootstrap = vim.v.shell_error ~= 0
     end
 
     -- Start Packer
@@ -25,6 +28,13 @@ return {
         require('plugins.lightspeed'),
         require('plugins.indent-blankline'),
         require('plugins.treesitter'),
+        require('plugins.lsp'),
+        require('plugins.cmp'),
+        -- require('plugins.lint'),
+        require('plugins.telescope'),
+        require('plugins.gitsigns'),
+        require('plugins.trouble'),
+        require('plugins.cheatsheet'),
         -- vim
         require('plugins.wordmotion'),
         require('plugins.highlightedyank'),
@@ -37,6 +47,8 @@ return {
       for _, plugin in pairs({
         -- neovim
         'gpanders/editorconfig.nvim',
+        'mfussenegger/nvim-dap',
+        'folke/lsp-colors.nvim',
         -- vim
         'tpope/vim-repeat',
         'tpope/vim-surround',
@@ -45,6 +57,8 @@ return {
         'wellle/targets.vim',
         'michaeljsmith/vim-indent-object',
         'thinca/vim-visualstar',
+        'kyazdani42/nvim-web-devicons',
+        'tridactyl/vim-tridactyl',
       })
       do
         use (plugin)
