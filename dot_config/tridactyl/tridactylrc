@@ -1,4 +1,16 @@
-# set smooth scrolling
+""" General Settings
+" set smooth scrolling
 set smoothscroll true
-# set editor to neovim
+" set editor to neovim
 set editorcmd /usr/bin/alacritty -e '/usr/bin/nvim'
+" set theme
+
+""" Binds
+bind ge composite get_current_url | js -p -r youtube-embed-toggle.js | open_quiet
+
+""" Autocmds
+autocmd DocStart ^https://coggle.it/diagram/.*$ mode ignore
+autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
+autocmd TriStart .* source_quiet
+
+" vim: set filetype=tridactyl
