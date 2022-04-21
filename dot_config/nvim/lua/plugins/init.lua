@@ -13,12 +13,12 @@ return {
     -- Bootstrap Packer
     local packer_bootstrap = false
     if fn.empty(fn.glob(packer_dir)) > 0 then
-      fn.system({'git', 'clone', '--depth', '1', packer_repo, packer_dir})
+      fn.system({ 'git', 'clone', '--depth', '1', packer_repo, packer_dir })
       packer_bootstrap = vim.v.shell_error ~= 0
     end
 
     -- Start Packer
-    require'packer'.startup(function(use)
+    require 'packer'.startup(function(use)
 
       use 'wbthomason/packer.nvim'
 
@@ -37,14 +37,22 @@ return {
         require('plugins.gitsigns'),
         require('plugins.trouble'),
         require('plugins.cheatsheet'),
+        require('plugins.comment'),
         -- vim
         require('plugins.wordmotion'),
         require('plugins.highlightedyank'),
         require('plugins.codestats'),
-      })
-      do
+      }) do
         module.init(use)
       end
+
+      use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+          require'todo-comments'.setup()
+        end,
+      }
 
       for _, plugin in pairs({
         -- neovim
@@ -54,20 +62,19 @@ return {
         -- vim
         'tpope/vim-repeat',
         'tpope/vim-surround',
-        'tpope/vim-commentary',
+        -- 'tpope/vim-commentary',
         'vim-scripts/ReplaceWithRegister',
         'wellle/targets.vim',
         'michaeljsmith/vim-indent-object',
         'thinca/vim-visualstar',
         'kyazdani42/nvim-web-devicons',
         'tridactyl/vim-tridactyl',
-      })
-      do
-        use (plugin)
+      }) do
+        use(plugin)
       end
 
       if packer_bootstrap then
-        require'packer'.sync()
+        require 'packer'.sync()
       end
     end)
   end,
