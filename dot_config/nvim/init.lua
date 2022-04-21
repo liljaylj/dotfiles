@@ -1,6 +1,7 @@
 -- shortcuts
 local cmd = vim.cmd  -- execute VimScript
 local g = vim.g      -- g: global variables
+local keymap = vim.api.nvim_set_keymap
 
 -- Disable providers except python3
 g.loaded_ruby_provider = 0
@@ -17,3 +18,7 @@ require'plugins'.init()
 
 -- Old vim config
 cmd 'source ~/.config/nvim/old.vim'
+
+-- Keybindings
+local keymap_opts = {noremap = true, silent = true}
+keymap('', '<leader>gf', '<cmd>Explore!<cr>', keymap_opts)
