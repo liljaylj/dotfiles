@@ -21,4 +21,4 @@ cmd 'source ~/.config/nvim/old.vim'
 
 -- Keybindings
 local keymap_opts = {noremap = true, silent = true}
-keymap('', '<leader>gf', '<cmd>Explore!<cr>', keymap_opts)
+keymap('', '<leader>gf', '<cmd>20Explore!<cr>', keymap_opts)
