@@ -31,6 +31,7 @@ alias ch='chezmoi'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias xcd='cd "$(xplr --print-pwd-as-result)"'
 alias xkbdisplay='GDK_BACKEND=x11 gkbd-keyboard-display -l'
+alias hx='helix'
 
 # TODO: remove when wayland support lands
 alias marktext='GDK_BACKEND=x11 marktext'
