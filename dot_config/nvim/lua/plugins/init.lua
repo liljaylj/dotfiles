@@ -38,6 +38,7 @@ return {
         require('plugins.trouble'),
         require('plugins.cheatsheet'),
         require('plugins.comment'),
+        require('plugins.todo-comments'),
         -- vim
         require('plugins.wordmotion'),
         require('plugins.highlightedyank'),
@@ -45,14 +46,6 @@ return {
       }) do
         module.init(use)
       end
-
-      use {
-        'folke/todo-comments.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function()
-          require'todo-comments'.setup()
-        end,
-      }
 
       for _, plugin in pairs({
         -- neovim
