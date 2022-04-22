@@ -14,6 +14,11 @@ return {
         end
 
         require('plugins/lsp/lua')
+
+        -- TODO: 1. explore vim.lsp and configure keymaps for vim.lsp.buf
+        --       https://github.com/neovim/nvim-lspconfig#suggested-configuration
+        --       2. signature help (interactive) ???
+        --       3. formatting
       end,
     }
 

@@ -2,6 +2,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+-- TODO: only configure nvim lua when editing nvim config (lua), otherwise use common lua config
 require'lspconfig'.sumneko_lua.setup {
   capabilities = require'plugins.cmp'.capabilities,
   settings = {
