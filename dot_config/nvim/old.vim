@@ -118,13 +118,6 @@ if !exists('g:vscode')
       nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
     endif
 
-    " Relative/Absolute line numbering toggle (NORMAL/INSERT modes respectively)
-    set number relativenumber
-    augroup numbertoggle
-      autocmd!
-      autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
-      autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * set norelativenumber
-    augroup END
 
     " Show invisibles
     set list
