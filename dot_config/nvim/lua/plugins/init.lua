@@ -7,6 +7,8 @@ local packer_repo = 'https://github.com/wbthomason/packer.nvim'
 
 return {
   init = function()
+    vim.g.loaded_netrw = 1
+
     -- Enable built-in plugins
     vim.cmd 'packadd matchit'
 
@@ -39,6 +41,7 @@ return {
         require('plugins.cheatsheet'),
         require('plugins.comment'),
         require('plugins.todo-comments'),
+        require('plugins.tree'),
         -- vim
         require('plugins.wordmotion'),
         require('plugins.highlightedyank'),
