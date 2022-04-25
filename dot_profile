@@ -195,7 +195,7 @@ grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1
 
 # Import environment to systemctl user session
 import_env PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME ZDOTDIR JAVA_HOME \
-    GTK_RC_FILES GTK2_RC_FILES QT_QPA_PLATFORMTHEME
+    GTK_RC_FILES GTK2_RC_FILES GTK_THEME QT_QPA_PLATFORMTHEME
 
 # Cleanup
 unset -f prepend_envvar
