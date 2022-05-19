@@ -38,7 +38,7 @@ show_marks yes
 ### Custom windows tweaks
 for_window {
     # JetBrains IDEs
-    [class="jetbrains-idea-ce" title="win0"] floating enabled, border pixel 0
+    [class="jetbrains-idea-ce" title=" "] floating enabled, border pixel 0
     [class="jetbrains-idea-ce" title="Welcome to IntelliJ IDEA"] floating enabled
     # XP-Pen Pentablet config
     [class="pentablet"] floating enabled
