@@ -179,6 +179,9 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-a:select-all,ctrl-d:dese
 # TODO: install `vagrant plugin install vagrant-libvirt`!
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
+# Libvirt
+export LIBVIRT_DEFAULT_URI='qemu:///system'
+
 #
 # Import from file(s)
 set -a
