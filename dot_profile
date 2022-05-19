@@ -1,10 +1,11 @@
 prepend_envvar() {
     eval "val=\"\$$1\""
-    case ":$val:" in
-        *:"$2":*)
+    delim="${3:-:}"
+    case "$delim$val$delim" in
+        *"$delim$2$delim"*)
             ;;
         *)
-            eval "$1=\"$2\${$1:+:\$$1}\""
+            eval "$1=\"$2\${$1:+$delim\$$1}\""
             ;;
     esac
 }
