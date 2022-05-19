@@ -34,9 +34,4 @@ export CLUTTER_BACKEND=wayland
 # Java AWT
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# WORKAROUNDS
-# -----------
-# if gtk uses portal it looks ugly
-# export GTK_USE_PORTAL=0
-
 systemd-cat --identifier=sway /usr/bin/sway -V $@
