@@ -200,6 +200,7 @@ then
     grep -Eo '^[^#=]+' "$XDG_CONFIG_HOME/user-dirs.dirs" | xargs systemctl --user import-environment
 fi
 
+# TODO: divide gui and vconsole options in profile.d
 # Source host dependent profile(s)
 if [ -d "$XDG_CONFIG_HOME/profile.d" ] && [ -r "$XDG_CONFIG_HOME/profile.d" ]
 then
