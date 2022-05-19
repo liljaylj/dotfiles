@@ -12,11 +12,6 @@ set {
     # Your preferred application launcher
     # Note: it's recommended that you pass the final command to sway
     $menu 'wofi -ImiG -S drun | xargs swaymsg exec --'
-    # Swaynag command
-    $nag            exec swaynagmode
-    $nag_exit       $nag --exit
-    $nag_confirm    $nag --confirm
-    $nag_select     $nag --select
     # xkb config
     $xkb_layout 'us,kz(ruskaz)'
     $xkb_option 'grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
@@ -251,7 +246,7 @@ bindsym --to-code {
     $mod+Shift+c nop
 
     # exit sway (logs you out of your Wayland session)
-    $mod+Shift+e $nag -t 'warning' -m 'Exit?' -b 'Yes, exit sway' 'swaymsg exit'
+    $mod+Shift+e exec sway-exit
 
     # Moving around
     # =============
@@ -317,7 +312,6 @@ bindsym --to-code {
     # Toggle the current focus between tiling and floating mode
     $mod+Shift+Space floating toggle
     # Swap focus between the tiling area and the floating area
-    # TODO: solve conflict with keyboard layout change
     $mod+Ctrl+Space focus mode_toggle
     # make floating window sticky
     $mod+Shift+s sticky toggle
@@ -367,31 +361,6 @@ mode "resize" {
     }
 }
 bindsym --to-code $mod+r mode "resize"
-
-### Swaynag
-# command
-swaynag_command $nag
-# mode
-mode "nag" {
-    bindsym --to-code {
-        Ctrl+d      mode "default"
-
-        Ctrl+c      $nag_exit
-        q           $nag_exit
-        Escape      $nag_exit
-
-        Return      $nag_confirm
-
-        Tab         $nag_select prev
-        Shift+Tab   $nag_select next
-        H           $nag_select next
-        L           $nag_select prev
-        Left        $nag_select next
-        Right       $nag_select prev
-        Up          $nag_select next
-        Down        $nag_select prev
-    }
-}
 
 # Status Bar
 # ==========
