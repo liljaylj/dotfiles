@@ -121,6 +121,9 @@ export GTK_THEME=Materia-dark-compact
 # ...questionable way to configure gtk settings
 gsettings-setup
 
+# Cursor theme
+export XCURSOR_THEME=capitaine-cursors
+
 # Gibo git boilerplates
 export GIBO_BOILERPLATES="$XDG_CACHE_HOME/gitignore-boilerplates"
 
