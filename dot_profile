@@ -175,6 +175,10 @@ export YTT_REPO='liljaylj/yttasks'
 # FZF default arguments
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'"
 
+# Vagrant
+# TODO: install `vagrant plugin install vagrant-libvirt`!
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
 #
 # Import from file(s)
 set -a
