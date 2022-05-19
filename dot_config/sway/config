@@ -95,7 +95,10 @@ input 'type:touchpad' {
     tap_button_map      lrm
 }
 
-seat seat0 hide_cursor 15000
+seat seat0 {
+    hide_cursor 15000
+    xcursor_theme capitaine-cursors
+}
 
 # Keyboard
 input 'type:keyboard' {
