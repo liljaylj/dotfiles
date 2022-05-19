@@ -223,6 +223,7 @@ import_env PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_CONFIG_HOME XDG_CACHE_HOME XDG
 
 # Cleanup
 unset -f prepend_envvar
+unset -f import_env
 
 # If running from tty1 start sway
 if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
