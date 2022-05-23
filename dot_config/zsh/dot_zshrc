@@ -1,6 +1,11 @@
 # Is unicode and 256-color supported by terminal
 # Note: basically it only checks if terminal is getty
-grep -Eq '(^dumb|linux$)' <<<"$TERM" || export UNICODE_256_COLOR=1
+if grep -Eq '^(dumb|linux|screen|tmux|xterm)$' <<<"$TERM"
+then
+  export UNICODE_256_COLOR=
+else
+  export UNICODE_256_COLOR=1
+fi
 
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p "$CACHE_DIR"
