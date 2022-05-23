@@ -226,6 +226,6 @@ unset -f prepend_envvar
 unset -f import_env
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
-    exec sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ] && [ ! $IS_WSL ]; then
+#    exec sway
+#fi
