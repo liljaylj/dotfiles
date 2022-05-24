@@ -18,7 +18,7 @@ set {
 }
 
 ### Output configuration
-output * bg ~/Pictures/bg.jpg fill
+output * bg "$XDG_DATA_HOME/sway/bg.jpg" fill
 
 ### Look & feel
 title_align center

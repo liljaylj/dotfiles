@@ -1,4 +1,4 @@
 #!/bin/bash
 
-swaylock -f -i ~/Pictures/bg-blurred.jpg
+swaylock -f -i "$XDG_DATA_HOME/sway/bg-blurred.jpg"
 swaymsg input 'type:keyboard' xkb_switch_layout 0
