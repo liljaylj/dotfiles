@@ -268,7 +268,8 @@ if !exists('g:vscode')
     nnoremap <silent> <leader>u :MundoToggle<CR>
     " palenight colorscheme
     colorscheme palenight
-    if $TERM =~? '^\(dumb\|linux\)$'
+	" TODO: change this to `tput colors` invocation and migrate to lua
+    if $TERM =~? '^\(dumb\|linux\|screen\|tmux\|xterm\)$'
         set notgc " 8-color format
         let g:palenight_termcolors = 16
         let g:palenight_terminal_italics = 0
