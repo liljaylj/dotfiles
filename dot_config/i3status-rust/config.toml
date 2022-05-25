@@ -69,13 +69,13 @@ on_click = "xdg-open https://codestats.net/users/liljaylj"
 interval = 300
 
 [[block]]
-block = "time"
-interval = 5
-format = "%a %d/%m %R"
-
-[[block]]
 block = "keyboard_layout"
 driver = "sway"
 [block.mappings]
 "English (US)" = "EN"
 "Russian (Kazakhstan, with Kazakh)"= "RU"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
