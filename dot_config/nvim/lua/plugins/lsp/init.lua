@@ -3,13 +3,21 @@ return {
 
     use {
       'neovim/nvim-lspconfig',
+      requires = {
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+      },
       config = function()
-        local lsp = require'lspconfig'
+        local lsp = require 'lspconfig'
+        local keymap = vim.keymap
+        local keymap_opts = { noremap = true, silent = true }
 
-        local servers = {'sumneko_lua', 'bashls', 'rust_analyzer', 'ansiblels', 'pyright'}
+        keymap.set('n', '<leader>li', vim.lsp.buf.formatting_sync, keymap_opts)
+
+        local servers = { 'sumneko_lua', 'bashls', 'rust_analyzer', 'ansiblels', 'pyright' }
         for _, server in ipairs(servers) do
-          lsp[server].setup{
-            capabilities = require'plugins.cmp'.capabilities,
+          lsp[server].setup {
+            capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
           }
         end
 

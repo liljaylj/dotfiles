@@ -1,0 +1,86 @@
+#!/bin/env python3
+
+from asyncio import Queue, create_task
+from json import dumps
+
+from aiohttp import ClientSession, web
+from yarl import URL
+
+server_host = 'localhost'
+server_port = 39332
+
+api_scheme = 'https'
+api_host = 'codestats.net'
+api_port = None
+
+
+def user_info(client):
+    async def user_info_handle(request):
+        url = URL(request.url).with_scheme(
+            api_scheme).with_host(api_host).with_port(api_port)
+        headers = {k: api_host if k.lower() == 'host' else v for (k, v)
+                   in request.headers.items()}
+        response = await client.request(request.method, url, headers=headers, data=await request.read())
+        if not response.ok:
+            print(response.status, response.reason, response.url)
+            print(await response.text())
+        return web.Response(headers=response.headers, body=await response.read())
+    return user_info_handle
+
+
+def pulse(queue):
+    async def pulse_handle(request):
+        await queue.put(request)
+        return web.Response(status=201, body=dumps({'ok': 'Great success!'}))
+    return pulse_handle
+
+
+async def pulse_worker(client, queue):
+    while True:
+        request = await queue.get()
+        url = URL(request.url).with_scheme(
+            api_scheme).with_host(api_host).with_port(api_port)
+        headers = {k: api_host if k.lower() == 'host' else v for (k, v)
+                   in request.headers.items()}
+        response = await client.request(request.method, url, headers=headers, data=await request.read())
+        if not response.ok:
+            print(response.status, response.reason, response.url)
+            print(await response.text())
+        queue.task_done()
+
+
+def shutdown(client):
+    async def shutdown_handle(app):
+        if client:
+            await client.close()
+    return shutdown_handle
+
+
+def pulse_worker_start(worker):
+    async def worker_start_handle(app):
+        app['pulse_worker'] = create_task(worker)
+    return worker_start_handle
+
+
+async def pulse_worker_stop(app):
+    app['pulse_worker'].cancel()
+    await app['pulse_worker']
+
+
+async def main():
+    queue = Queue()
+    client = ClientSession()
+    app = web.Application()
+    app.add_routes([
+        web.route('*', '/api/users/{username}', user_info(client)),
+        web.route('*', '/api/my/pulses', pulse(queue)),
+    ])
+    app.on_shutdown.append(shutdown(client))
+    app.on_startup.append(pulse_worker_start(pulse_worker(client, queue)))
+    app.on_cleanup.append(pulse_worker_stop)
+
+    return app
+
+
+if __name__ == '__main__':
+    web.run_app(main(), host=server_host, port=server_port)

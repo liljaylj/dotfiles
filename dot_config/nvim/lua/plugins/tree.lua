@@ -5,8 +5,10 @@ return {
       requires = {
         'kyazdani42/nvim-web-devicons',
       },
+      config = function()
+        require'nvim-tree'.setup()
+      end
     }
-    require'nvim-tree'.setup()
 
     local keymap_opts = {noremap = true, silent = true}
     vim.api.nvim_set_keymap('', '<leader>fe', '<cmd>NvimTreeFocus<cr>', keymap_opts)

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+swaymsg -t get_tree | jq -r '.. | select(.pid? and .focused?) | .pid' | xargs kill -"${1:-TERM}"

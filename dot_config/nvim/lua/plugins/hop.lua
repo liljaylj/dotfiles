@@ -4,8 +4,7 @@ return {
   init = function(use)
 
     use {
-      -- 'phaazon/hop.nvim',
-      'liljaylj/hop.nvim',
+      'phaazon/hop.nvim',
       config = function()
         require'hop'.setup {
           char2_fallback_key = '<cr>',

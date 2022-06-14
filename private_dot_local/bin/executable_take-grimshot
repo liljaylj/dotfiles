@@ -1,0 +1,16 @@
+#!/bin/sh
+
+read -r -d '' COMMANDS <<EOM
+copy active
+copy screen
+copy output
+copy area
+copy window
+save active
+save screen
+save output
+save area
+save window
+EOM
+
+echo "$COMMANDS" | wofi -iGM fuzzy -dp grimshot | (read -r COMMAND && swaymsg exec "grimshot --notify $COMMAND")

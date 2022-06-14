@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ ! "$1" ] && echo "Usage: $(basename "$0") <app name>" && exit
+
+for p in $(echo "$XDG_DATA_HOME" && (echo "$XDG_DATA_DIRS" | tr ":" "\n")); do
+    dex "$p/applications/$1.desktop" && break
+done

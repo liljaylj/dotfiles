@@ -4,10 +4,6 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 
-# XWayland keyboard config
-export XKB_DEFAULT_LAYOUT='us,ru,kz'
-export XKB_DEFAULT_OPTIONS='grp:alt_space_toggle,compose:sclk,keypad:pointerkeys'
-
 # Enable Wayland in Apps
 # ----------------------
 # NOTE: Gtk3 apps enable Wayland by default
@@ -34,4 +30,10 @@ export CLUTTER_BACKEND=wayland
 # Java AWT
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-systemd-cat --identifier=sway /usr/bin/sway -V $@
+# Fix external display disabled after dpms off
+export WLR_DRM_NO_MODIFIERS=1
+
+# reset cwd to user home
+cd "$HOME"
+
+systemd-cat --identifier=sway /usr/bin/sway -V "$@"

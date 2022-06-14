@@ -18,7 +18,10 @@ set {
 }
 
 ### Output configuration
-output * bg "$XDG_DATA_HOME/sway/bg.jpg" fill
+output {
+    eDP-1 position 0,840 mode 1920x1080 bg "$XDG_DATA_HOME/sway/bg.jpg" fill
+    "Unknown 24E1W1 GNSK6HA054206" position 1920,0 mode 1920x1080 transform 90 bg "$XDG_DATA_HOME/sway/bg.jpg" fill
+}
 
 ### Look & feel
 title_align center
@@ -53,6 +56,12 @@ for_window {
     [title="^CopyQ$"] border pixel 0
     # Telegram PiP
     [title="TelegramDesktop" app_id="telegramdesktop"] floating enabled, border pixel 0
+    # Firefox PiP
+    [title="Picture-in-Picture" app_id="firefox"] floating enabled, border pixel 0
+    # LXQt policykit agent
+    [app_id="lxqt-policykit-agent"] floating enabled
+    # LXQt ssh askpass dialog
+    [app_id="lxqt-openssh-askpass"] floating enabled
 
     # Icon in title
     [app_id="Alacritty"] title_format  %title
@@ -67,18 +76,6 @@ for_window {
 floating_modifier $mod normal
 
 ### Input configuration
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
 # Touchpad
 input 'type:touchpad' {
     accel_profile       adaptive
@@ -101,16 +98,14 @@ seat seat0 {
 }
 
 # Keyboard
-input 'type:keyboard' {
-    xkb_numlock         enabled
-    xkb_layout          $xkb_layout
-    xkb_options         $xkb_option
-}
+# NOTE: workaround for "Exiting due to channel error"
+#input 'type:keyboard' {
+#    xkb_numlock         enabled
+#    xkb_layout          $xkb_layout
+#    xkb_options         $xkb_option
+#}
 
 ### Key bindings
-#
-# Basics:
-#
 bindsym --to-code {
     # test command
     --no-repeat $mod+p exec '~/.local/bin/sway-command'

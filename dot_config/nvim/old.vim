@@ -1,9 +1,3 @@
-" lua require('main')
-
-" Map <Leader> key to space
-"map <Space> <Leader>
-" let mapleader="\<Space>"
-
 " Hard mode
 nnoremap <Left>         :echoe "Use h"<CR>
 nnoremap <Right>        :echoe "Use l"<CR>
@@ -14,42 +8,6 @@ nnoremap <End>          :echoe "Use $"<CR>
 nnoremap <PageDown>     :echoe "Use CTRL-f"<CR>
 nnoremap <PageUp>       :echoe "Use CTRL-b"<CR>
 
-" Normalize
-set nocompatible " Disable vi-comptible mode
-set backspace=indent,eol,start " Backspace behavior
-set autoindent " Enable autoindent
-set tabstop=4 " Set tab size
-set shiftwidth=4
-set autoread " Autoread external changes
-set mouse=a " Set mouse on Neovim
-set timeoutlen=3000 " Leader key timeout
-syntax enable " Enable syntax highlighting
-filetype plugin indent on " Enable filetype detection and indentation
-set ruler " Enable ruler at bottom right corner (line number, column info)
-set laststatus=2 " Enable statusline
-set wildmenu " Enable completion menu in command mode
-set scrolloff=3 " Number of lines always visible around the cursor
-set sidescrolloff=5 " Number of columns always visible on horizontal scroll
-set display+=lastline " ???
-set encoding=utf-8
-set formatoptions+=j
-set history=10000
-set tabpagemax=50
-set hls " Enlable highliting of all occurences in seach
-set incsearch " Enable incremental search
-set nowrap " Disable word wrap
-set foldmethod=marker
-set bg=dark
-
-" Move in insert/command mode
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-cnoremap <C-h> <Left>
-cnoremap <C-j> <Down>
-cnoremap <C-k> <Up>
-cnoremap <C-l> <Right>
 
 " Autoswitch keyboard layout on insert mode
 function! KeyboardLayoutCmdlineEnter()
@@ -97,11 +55,6 @@ aug AutoSwitchKeyboardLayout
 aug END
 
 if !exists('g:vscode')
-
-    " toggle word wrap
-    nnoremap <leader>p :set wrap!<cr>
-    " toggle 24-bit color support
-    nnoremap <leader>t :set tgc!<CR>
 
     " highlight the search match in red
     highlight WhiteOnRed ctermbg=red ctermfg=white guibg=red guifg=white
@@ -224,16 +177,16 @@ Plug 'wikitopian/hardmode'
 
 if !exists('g:vscode')
     Plug 'junegunn/vim-plug'
-    Plug 'farmergreg/vim-lastplace'
-    Plug 'junegunn/vim-peekaboo'
+    " Plug 'farmergreg/vim-lastplace'
+    " Plug 'junegunn/vim-peekaboo'
     " Plug 'junegunn/fzf.vim'
-    Plug 'tpope/vim-fugitive'
+    " Plug 'tpope/vim-fugitive'
     " Plug 'easymotion/vim-easymotion'
     " Plug 'phaazon/hop.nvim'
     " Plug 'dense-analysis/ale'
     Plug 'ojroques/vim-oscyank'
     Plug 'drewtempelmeyer/palenight.vim'
-    Plug 'psliwka/vim-smoothie'
+    " Plug 'psliwka/vim-smoothie'
     Plug 'simnalamburt/vim-mundo'
 
     " LSP
@@ -267,7 +220,7 @@ if !exists('g:vscode')
     " mundo mapping
     nnoremap <silent> <leader>u :MundoToggle<CR>
     " palenight colorscheme
-    colorscheme palenight
+    " colorscheme palenight
 	" TODO: change this to `tput colors` invocation and migrate to lua
     if $TERM =~? '^\(dumb\|linux\|screen\|tmux\|xterm\)$'
         set notgc " 8-color format
@@ -300,6 +253,4 @@ if !exists('g:vscode')
     vnoremap <leader>c :OSCYank<CR>
     nnoremap <leader>c <Plug>OSCYank
 
-    " LSP config
-    " lua require'lspconfig'.pyright.setup{}
 endif

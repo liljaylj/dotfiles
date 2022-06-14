@@ -1,5 +1,6 @@
 #!/bin/bash
 
-# replace qalc with `brightnessctl g -P` when upstream updates
+# TODO: replace qalc with `brightnessctl g -P` when upstream updates
+# TODO: configure exponent
 brightnessctl -e4 -q s "$1" && \
     wobrun "$(qalc -t "round($(brightnessctl g) / $(brightnessctl m) * 100)")"

@@ -19,6 +19,8 @@ import_env() {
     fi
 }
 
+export XDG_SESSION_ID=1  # TODO: remove this after ly update
+
 # XDG dirs
 # Systemwide
 prepend_envvar XDG_DATA_DIRS '/usr/share'
@@ -83,6 +85,9 @@ export GOPATH
 export MOZ_WEBRENDER=1
 export MOZ_ACCELERATED=1
 export MOZ_USE_XINPUT2=1
+# enable hardware acceleration using va-api
+# TODO: remove this after https://bugzilla.mozilla.org/show_bug.cgi?id=1751363 lands
+export MOZ_DISABLE_RDD_SANDBOX=1
 
 # Qt
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -151,7 +156,7 @@ export RUSTFLAGS="-C target-cpu=native"
 # Debuginfod URLs
 export DEBUGINFOD_URLS='https://debuginfod.archlinux.org/'
 
-# XWayland keyboard config
+# Xkeyboard keyboard config
 export XKB_DEFAULT_LAYOUT='us,kz(ruskaz)'
 export XKB_DEFAULT_OPTIONS='grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
 
